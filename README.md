@@ -1,5 +1,3 @@
-# datamie
-
 ## Getting Started
 
 Clone this repository and bundle.
