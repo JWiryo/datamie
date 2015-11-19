@@ -9,10 +9,11 @@ gem 'jquery-rails' # Use jquery as the JavaScript library
 gem 'turbolinks' # Turbolinks makes following links in your web application faster
 gem 'jbuilder', '~> 2.0' # Build JSON APIs with ease
 gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the API under doc/api.
-gem 'bootstrap-sass', '~> 3.3', '>= 3.3.5.1' 
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.5.1'
 
 group :development, :test do
   gem 'byebug' # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'rspec', '~> 3.4'
 end
 
 group :development do
