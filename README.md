@@ -1,6 +1,11 @@
 ## Getting Started
 
 Install ruby 2.1.7! Dependencies on project does not work with 2.2.3
+Install ruby devkit. Dependencies require this as well. Initialize devkit as show on website.
+
+Install bundler
+
+    gem install bundler
 
 Clone this repository and bundle.
 
