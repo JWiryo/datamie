@@ -1,5 +1,7 @@
 ## Getting Started
 
+Install ruby 2.1.7! Dependencies on project does not work with 2.2.3
+
 Clone this repository and bundle.
 
     git clone <repository-url>
