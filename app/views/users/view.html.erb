@@ -1,0 +1,14 @@
+<h1> Username </h1>
+
+<% client = Mysql2::Client.new(:database => "datamie", :host => "localhost", :username => "datamie", :password => "") %>
+<% results = client.query("SELECT * FROM users") %>
+
+<ol>
+<% results.each do |row| %>
+  <% row.each do |key, value| %>
+	<% if key=='Username'%>
+	  <li><%= value %></li>
+	<% end %>
+  <% end %>
+<% end %>
+</ol>
