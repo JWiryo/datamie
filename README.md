@@ -5,7 +5,7 @@ Dependencies on project does not work with 2.2.3
 
 #### For windows users only
     
-    Install ruby devkit. Dependencies require this as well. Initialize devkit as show on website.
+    Install ruby devkit. Dependencies require this as well. Initialize devkit as shown on website.
 
 Install bundler
 
@@ -23,7 +23,7 @@ Copy the database scripts from google drive
     
 Open mySQL, Create datamie database
 
-    CREATE DATABASE datamie
+    CREATE DATABASE datamie;
 
 Go to Users and Privileges > Add Account
 
@@ -40,14 +40,15 @@ Ensure that table is populated.
 
 Start the application server.
 
-    bin/rails server
-
-Run the following to generate db/schema.rb
-
-    rake db:schema:dump
+    ./bin/rails server
 
 Access the application at [http://localhost:3000/](http://localhost:3000/).
 
 #### Technical Details
 For some strange reason we are not using model.
 Lets see if we can do something about it at the controller level...
+
+### Resources
+http://www.rubydoc.info/gems/mysql2/0.2.3/frames
+http://guides.rubyonrails.org/getting_started.html
+http://stackoverflow.com/questions/13145696/ruby-on-rails-add-a-new-route
