@@ -1,11 +1,18 @@
 <h1> Products </h1>
 
-<ol>
-<% @products.each do |row| %>
-  <% row.each do |key, value| %>
-	<% if key=='Product_Name'%>
-	  <li><%= value %></li>
+<div class="container">
+	<% @products.each do |row| %>
+		<div class="row">
+		<div class="well">
+			<div class="row">
+				<div class="col-xs-10">
+					<%= row["Product_Name"] %>
+				</div>
+				<div class="col-xs-2">
+					<%= row["Stock_Qty"] %>
+				</div>
+			</div>
+		</div>
+		</div>
 	<% end %>
-  <% end %>
-<% end %>
-</ol>
+</div>

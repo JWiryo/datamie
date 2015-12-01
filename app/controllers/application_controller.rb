@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protected
   def query_db(querystr)
 	@client = Mysql2::Client.new(:database => "datamie", :host => "localhost", :username => "datamie", :password => "")
-    @users = @client.query(querystr)
-	return @users
+    @result = @client.query(querystr)
+	return @result
   end
 end
