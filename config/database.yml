@@ -10,7 +10,7 @@ development:
   encoding: utf8
   database: datamie
   reconnect: false
-  username: root
+  username: datamie
   password:
   socket: /tmp/mysql.sock
   host: localhost
@@ -24,7 +24,7 @@ test:
   encoding: utf8
   database: datamie
   reconnect: false
-  username: root
+  username: datamie
   password:
   socket: /tmp/mysql.sock
   host: localhost
@@ -36,7 +36,7 @@ production:
   encoding: utf8
   database: datamie
   reconnect: false
-  username: root
+  username: datamie
   password:
   socket: /tmp/mysql.sock
   host: localhost
