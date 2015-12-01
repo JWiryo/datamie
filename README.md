@@ -6,6 +6,7 @@ Dependencies on project does not work with 2.2.3
 #### For windows users only
 
     Install ruby devkit. Dependencies require this as well. Initialize devkit as shown on website.
+    Install nodejs to resolve ruby issue.
 
 Install bundler
 
