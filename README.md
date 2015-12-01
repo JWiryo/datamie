@@ -21,7 +21,14 @@ Copy the database scripts from google drive
 
     https://drive.google.com/drive/folders/0Bw3XzzDAKz4WN0JZR013MGp5WVk
 
-Open mySQL, Create datamie database
+Open mySQL, make sure your connection has the following configuration.
+
+    Hostname: 127.0.0.1
+    Port: 3306
+    Username: root
+    Password: ~~leave blank~~
+
+Create datamie database
 
     CREATE DATABASE datamie;
 
@@ -46,10 +53,12 @@ Start the application server.
 Access the application at [http://localhost:3000/](http://localhost:3000/).
 
 #### Technical Details
+------
 For some strange reason we are not using model.
 Lets see if we can do something about it at the controller level...
 
 #### Resources
+------
 http://rogerdudler.github.io/git-guide/
 http://www.rubydoc.info/gems/mysql2/0.2.3/frames
 http://guides.rubyonrails.org/getting_started.html
