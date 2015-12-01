@@ -1,6 +1,6 @@
 <h1> Username </h1>
 
-<% client = Mysql2::Client.new(:database => "datamie", :host => "localhost", :username => "datamie", :password => "") %>
+<% client = Mysql2::Client.new(:database => "datamie", :host => "localhost", :username => "root", :password => "") %>
 <% results = client.query("SELECT * FROM users") %>
 
 <ol>

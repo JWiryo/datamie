@@ -10,8 +10,8 @@ development:
   encoding: utf8
   database: datamie
   reconnect: false
-  username: datamie
-  password: 
+  username: root
+  password:
   socket: /tmp/mysql.sock
   host: localhost
   port: 3306
@@ -24,20 +24,20 @@ test:
   encoding: utf8
   database: datamie
   reconnect: false
-  username: datamie
-  password: 
+  username: root
+  password:
   socket: /tmp/mysql.sock
   host: localhost
   port: 3306
-  
- 
+
+
 production:
   adapter: mysql2
   encoding: utf8
   database: datamie
   reconnect: false
-  username: datamie
-  password: 
+  username: root
+  password:
   socket: /tmp/mysql.sock
   host: localhost
   port: 3306

@@ -4,7 +4,7 @@ Install ruby 2.1.7 !
 Dependencies on project does not work with 2.2.3
 
 #### For windows users only
-    
+
     Install ruby devkit. Dependencies require this as well. Initialize devkit as shown on website.
 
 Install bundler
@@ -20,7 +20,7 @@ Clone this repository and bundle.
 Copy the database scripts from google drive
 
     https://drive.google.com/drive/folders/0Bw3XzzDAKz4WN0JZR013MGp5WVk
-    
+
 Open mySQL, Create datamie database
 
     CREATE DATABASE datamie;
@@ -31,6 +31,7 @@ Go to Users and Privileges > Add Account
     Authentication Type: standard
     Limit to hosts matching: localhost
     Password : <blank>
+
 Schema Privileges > Add Entry > datamie
 Select All, tick GRANT OPTION as well.
 Apply
@@ -48,7 +49,8 @@ Access the application at [http://localhost:3000/](http://localhost:3000/).
 For some strange reason we are not using model.
 Lets see if we can do something about it at the controller level...
 
-### Resources
+#### Resources
+http://rogerdudler.github.io/git-guide/
 http://www.rubydoc.info/gems/mysql2/0.2.3/frames
 http://guides.rubyonrails.org/getting_started.html
 http://stackoverflow.com/questions/13145696/ruby-on-rails-add-a-new-route
