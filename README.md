@@ -26,7 +26,7 @@ Open mySQL, make sure your connection has the following configuration.
     Hostname: 127.0.0.1
     Port: 3306
     Username: root
-    Password: ~~leave blank~~
+    Password: <leave blank>
 
 Create datamie database
 
