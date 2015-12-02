@@ -1,0 +1,59 @@
+<h1> <%= @product["Product_Name"] %> </h1>
+
+<div class="container">
+	<div class="row">
+		<div class="well">
+			<div class="row">
+				<div class="col-xs-10">
+					Date Added: <%= @product["Date_Added"] %>
+				</div>
+				<div class="col-xs-2">
+					<%= @product["Stock_Qty"] %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% @ratings.each do |row| %>
+		<div class="row">
+		<div class="well">
+			<div class="row">
+				<div class="col-xs-10">
+					<%= row["Username"] %> <%= row["Date"] %>
+				</div>
+				<div class="col-xs-2">
+					Helpfulness Rating: <%= row["Helpfulness_Score"] %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-10">
+					<%= row["Description"] %>
+				</div>
+				<div class="col-xs-2">
+					<%= row["Score"] %>/10
+				</div>
+			</div>
+		</div>
+		</div>
+	<% end %>
+	
+	<!-- new rating -->
+	<div class="row">
+		<div class="well">
+			<%= form_for :rating, url: url_for(:controller => "ratings", :action => "create") do |f| %>
+				<div class="row">
+					<div class="col-xs-10">
+						<%= f.text_area :Description %>
+					</div>
+					<div class="col-xs-2">
+						<%= f.text_field :Score %>
+					</div>
+				</div>
+				<%= f.hidden_field :Product_ID, :value => @product["Product_ID"] %>
+				<%= f.hidden_field :Username, :value => "luccan" %>
+				<%= f.submit %>
+			<% end %>
+		</div>
+	</div>
+	
+	<%= link_to 'Back', url_for(:controller => 'products', :action => 'index') %>
+</div>
