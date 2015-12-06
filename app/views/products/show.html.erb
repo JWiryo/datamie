@@ -58,7 +58,7 @@
 			<%= form_for :rating, url: url_for(:controller => "ratings", :action => "create") do |f| %>
 				<div class="row">
 					<div class="col-xs-4">
-						<%= f.text_area :Description %>
+						<%= f.text_area :Description, :placeholder=>"Describe here", :rows=>3, :cols=>30 %>
 					</div>
 					<div class="col-xs-4">
 						<%= f.text_field :Score %>
