@@ -1,14 +1,21 @@
 class RatingsController < ApplicationController
 
   def create
-    query_db("INSERT INTO Ratings (Product_ID, Username, Score, Date, Description)
-        SELECT "+params[:rating][:Product_ID].to_s+" AS Product_ID,
-        '"+params[:rating][:Username].to_s+"' AS Username,
-        "+params[:rating][:Score].to_s+" AS Score,
-        '"+Time.now.strftime("%Y-%m-%d %H:%M:%S")+"' AS Date,
-        '"+params[:rating][:Description].to_s+"' AS Description;")
-    redirect_to url_for(:controller => 'products', :action=>'show', :id => params[:rating][:Product_ID])
-    flash[:success] = "Rating successfully posted."
+    @rating = Rating.new(params[:rating])
+
+    if @rating.valid?
+      query_db("INSERT INTO Ratings (Product_ID, Username, Score, Date, Description)
+          SELECT "+params[:rating][:Product_ID].to_s+" AS Product_ID,
+          '"+params[:rating][:Username].to_s+"' AS Username,
+          "+params[:rating][:Score].to_s+" AS Score,
+          '"+Time.now.strftime("%Y-%m-%d %H:%M:%S")+"' AS Date,
+          '"+params[:rating][:Description].to_s+"' AS Description;")
+      redirect_to url_for(:controller => 'products', :action=>'show', :id => params[:rating][:Product_ID])
+      flash[:success] = "Rating successfully posted."
+    else
+      redirect_to :back
+      flash[:danger] = @rating.errors
+    end
   end
 
   def update
