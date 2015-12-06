@@ -40,6 +40,9 @@ GEM
     autoprefixer-rails (6.1.2)
       execjs
       json
+    bcrypt (3.1.10)
+    bcrypt (3.1.10-x64-mingw32)
+    bcrypt (3.1.10-x86-mingw32)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.6)
@@ -78,12 +81,16 @@ GEM
     minitest (5.8.3)
     multi_json (1.11.2)
     mysql2 (0.3.20)
+    mysql2 (0.3.20-x64-mingw32)
     mysql2 (0.3.20-x86-mingw32)
     nokogiri (1.6.7)
+      mini_portile2 (~> 2.0.0.rc2)
+    nokogiri (1.6.7-x64-mingw32)
       mini_portile2 (~> 2.0.0.rc2)
     nokogiri (1.6.7-x86-mingw32)
       mini_portile2 (~> 2.0.0.rc2)
     pg (0.17.1)
+    pg (0.17.1-x64-mingw32)
     pg (0.17.1-x86-mingw32)
     rack (1.6.4)
     rack-test (0.6.3)
@@ -170,9 +177,11 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw32
   x86-mingw32
 
 DEPENDENCIES
+  bcrypt
   bootstrap-sass (~> 3.3, >= 3.3.6)
   byebug
   coffee-rails (~> 4.1.0)

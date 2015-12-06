@@ -1,0 +1,24 @@
+<div class="login">
+  <div class="container">
+    <div class="form">
+
+    <h1>Login</h1>
+
+    <%= form_for :userdata, url: url_for(:controller => "session", :action => "authenticate") do |f| %>
+      <%= f.text_field :Data_Username, :placeholder => "Username" %>
+      <%= f.password_field :Data_Password, :placeholder => "Password" %>
+      <%= f.submit "Login", class: "btn-submit" %>
+    <% end %>
+
+  
+    </div>
+  </div>
+</div>
+
+<!--  <form>
+  First name:<br>
+  <input type="text" name="firstname">
+  <br>
+  Last name:<br>
+  <input type="text" name="lastname">
+</form>  -->
