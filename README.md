@@ -1,3 +1,13 @@
+#### TODO LIST
+1. User Signup + ~~SignIn~~ + SignOut (James)
+2. Database Maintenance + Convert to BCNF (Luccan)
+3. Rating and Helpfulness implementation (Kat)
+4. Front-End Bootstrap (Ivan)
+5. Ordering of Indomies
+6. Browsing of Indomies
+7. Admin Page + Statistics
+8. Report (Janice)
+
 ## Getting Started
 
 Install ruby 2.1.7 !
