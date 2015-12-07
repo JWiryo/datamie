@@ -1,14 +1,21 @@
-<h1> Products </h1>
+<div class="container">
+	<div class="col-xs-8">
+		<h1>Products</h1>
+	</div>
+	<div class="col-xs-4">
+		<h1>Stock Quantity</h1>
+	</div>
+</div>
 
 <div class="container">
 	<% @products.each do |row| %>
 		<div class="row">
 		<div class="well">
 			<div class="row">
-				<div class="col-xs-10">
+				<div class="col-xs-8">
 					<%= link_to row["Product_Name"], url_for(:controller => 'products', :action => 'show', :id => row["Product_ID"]) %>
 				</div>
-				<div class="col-xs-2">
+				<div class="col-xs-4">
 					<%= row["Stock_Qty"] %>
 				</div>
 			</div>

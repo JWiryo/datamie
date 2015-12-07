@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'users' => 'users#index'
 
   post 'ratings' => 'ratings#create'
+  post 'helpfulness' => 'helpfulness#create'
 
   get 'login' => 'session#new'
   post 'login/authenticate' => 'session#create'
