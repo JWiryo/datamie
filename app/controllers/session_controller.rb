@@ -10,8 +10,16 @@ class SessionController < ApplicationController
 
 		if !@database_username.nil?
 			if authenticate(@database_username, @session_password)
-				redirect_to products_path
-				flash[:success] = "Hello #{@session_username}, you have successfully logged in."
+				log_in @database_username
+				#current_user @database_username
+				#@current_user = current_user(@database_username)
+				if logged_in?(@current_user)
+					redirect_to products_path
+					flash[:success] = "Hello #{@session_username}, you have successfully logged in."
+				else
+					flash.now[:danger] = "No login"
+					render 'new'
+				end
 			else
 				flash.now[:danger] = "Invalid. Try again."
 				render 'new'
@@ -26,9 +34,13 @@ class SessionController < ApplicationController
 	private
 
 	def authenticate(database_username, input_password)
-		@database_password = query_db("SELECT Password FROM users WHERE Username = '" + database_username.to_s + "' ; " ).each(:as => :array).join
-		if @database_password == input_password
-			return true
+		if !database_username.empty?
+			@database_password = query_db("SELECT Password FROM users WHERE Username = '" + database_username.to_s + "' ; " ).each(:as => :array).join
+			if @database_password == input_password
+				return true
+			else
+				return false
+			end
 		else
 			return false
 		end

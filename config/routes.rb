@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post 'helpfulness' => 'helpfulness#create'
 
   get 'login' => 'session#new'
-  post 'login/authenticate' => 'session#create'
+  post 'login' => 'session#create'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
