@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+/* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
+
+html, body {
+    background: url("https://www.imageupload.co.uk/images/2015/12/06/indomie.gif") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+h1{
+	text-align: center;
+}
+header {
+  text-align: center;
+}
