@@ -7,6 +7,13 @@
 	</div>
 </div>
 
+<% if logged_in? %>
+<p>
+	<%= "Current user = " + $current_user %>
+    <%= link_to "Sign Out", logout_path, method: "delete" %>
+</p>
+<% end %>
+
 <div class="container">
 	<% @products.each do |row| %>
 		<div class="row">
