@@ -1,59 +1,95 @@
 <h1> <%= @product["Product_Name"] %> </h1>
 
 <div class="container">
+
 	<div class="row">
 		<div class="well">
 			<div class="row">
-				<div class="col-xs-10">
+				<div class="col-xs-8">
 					Date Added: <%= @product["Date_Added"] %>
 				</div>
-				<div class="col-xs-2">
-					<%= @product["Stock_Qty"] %>
+				<div class="col-xs-4">
+					Stock remaining = <%= @product["Stock_Qty"] %>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<div class="row">
+		<div class="col-xs-3">
+			<h2>Ratings</h2>
+		</div>
+		<div class="col-xs-3">
+			<h2>Rating Score</h2>
+		</div>
+		<div class="col-xs-3">
+			<h2>Helpfulness Score</h2>
+		</div>
+		<div class="col-xs-3">
+
+		</div>
+	</div>
+
 	<% @ratings.each do |row| %>
 		<div class="row">
 		<div class="well">
+
 			<div class="row">
-				<div class="col-xs-10">
-					<%= row["Username"] %> <%= row["Date"] %>
-				</div>
-				<div class="col-xs-2">
-					Helpfulness Rating: <%= row["Helpfulness_Score"] %>
+				<div class="col-xs-3">
+					<%= row["Username"] %>
+					<%= row["Date"] %>
 				</div>
 			</div>
+
 			<div class="row">
-				<div class="col-xs-10">
+
+				<div class="col-xs-3">
 					<%= row["Description"] %>
 				</div>
-				<div class="col-xs-2">
+
+				<div class="col-xs-3">
 					<%= row["Score"] %>/10
 				</div>
+
+				<div class="col-xs-3">
+					<%= row["Helpfulness_Score"] %>/5.0
+				</div>
+
+				<div class="col-xs-3">
+					<%= form_for :helpfulness, url: url_for(:controller => "helpfulness", :action => "create") do |h| %>
+						<%= h.select :Score, ([['Very Useless', 0], ['Useless', 1], ['Average',2], ['Helpful', 1], ['Very Helpful', 1]]) %>
+						<%= h.submit :class=>"form-control btn btn-primary", :value=>"Submit" %>
+						<%= h.hidden_field :Rating_ID, :value => row["Rating_ID"] %>
+						<%= h.hidden_field :Username, :value => "luccan" %>
+					<% end %>
+				</div>
+
 			</div>
 		</div>
 		</div>
 	<% end %>
-	
+
 	<!-- new rating -->
 	<div class="row">
 		<div class="well">
 			<%= form_for :rating, url: url_for(:controller => "ratings", :action => "create") do |f| %>
 				<div class="row">
-					<div class="col-xs-10">
-						<%= f.text_area :Description %>
+					<div class="col-xs-4">
+						<p>Rating Description</p>
+						<%= f.text_area :Description, :placeholder=>"How's the indomie homie?", :class=>"form-control"%>
 					</div>
-					<div class="col-xs-2">
-						<%= f.text_field :Score %>
+					<div class="col-xs-4">
+						<p>Rating Score</p>
+						<%= f.number_field :Score, :class=>"form-control bfh-number", :min=>"1", :max=>"10", :placeholder=>"no decimals allowed", :value=>"0" %>
+					</div>
+					<div class="col-xs-4">
+						<%= f.submit :class=>" btn btn-success form-control" %>
 					</div>
 				</div>
 				<%= f.hidden_field :Product_ID, :value => @product["Product_ID"] %>
+				<!-- TODO: username value should take that of the current session not hardcoded like this -->
 				<%= f.hidden_field :Username, :value => "luccan" %>
-				<%= f.submit %>
 			<% end %>
 		</div>
 	</div>
-	
-	<%= link_to 'Back', url_for(:controller => 'products', :action => 'index') %>
 </div>

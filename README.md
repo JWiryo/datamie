@@ -1,3 +1,13 @@
+#### TODO LIST
+1. User Signup + ~~SignIn~~ + SignOut (James)
+2. Database Maintenance + Convert to BCNF (Luccan)
+3. Rating and Helpfulness implementation (Kat)
+4. Front-End Bootstrap (Ivan)
+5. Ordering of Indomies
+6. Browsing of Indomies
+7. Admin Page + Statistics
+8. Report (Janice)
+
 ## Getting Started
 
 Install ruby 2.1.7 !
@@ -18,9 +28,7 @@ Clone this repository and bundle.
     cd datamie
     bundle install
 
-Copy the database scripts from google drive
-
-    https://drive.google.com/drive/folders/0Bw3XzzDAKz4WN0JZR013MGp5WVk
+Copy the database scripts from the folder datamie/SQLQueries
 
 Open mySQL, make sure your connection has the following configuration.
 
