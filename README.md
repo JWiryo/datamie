@@ -28,9 +28,7 @@ Clone this repository and bundle.
     cd datamie
     bundle install
 
-Copy the database scripts from google drive
-
-    https://drive.google.com/drive/folders/0Bw3XzzDAKz4WN0JZR013MGp5WVk
+Copy the database scripts from the folder datamie/SQLQueries
 
 Open mySQL, make sure your connection has the following configuration.
 

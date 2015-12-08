@@ -114,6 +114,8 @@ CREATE TABLE Ratings(
     FOREIGN KEY (Username) REFERENCES Users(Username)
 );
 
+
+-- TODO: User can only rate a product once.
 delimiter //
 CREATE TRIGGER Ratings_Create_Check
 BEFORE INSERT ON Ratings FOR EACH ROW BEGIN
@@ -137,7 +139,7 @@ END;//
 delimiter ;
 
 CREATE TABLE Helpfulness(
-	Rating_ID BIGINT NOT NULL,
+		Rating_ID BIGINT NOT NULL,
     Username VARCHAR(255) NOT NULL,
     Score INTEGER NOT NULL CHECK (Score=0 OR 1 OR 2 OR 3 OR 4 OR 5),
     PRIMARY KEY (Rating_ID, Username),
@@ -145,6 +147,7 @@ CREATE TABLE Helpfulness(
     FOREIGN KEY (Username) REFERENCES Users(Username)
 );
 
+-- TODO: a user should not be able to create helpfulness for his/her own rating
 delimiter //
 CREATE TRIGGER Helpfulness_Create_Check
 BEFORE INSERT ON Helpfulness FOR EACH ROW BEGIN

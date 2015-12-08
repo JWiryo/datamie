@@ -1,5 +1,4 @@
-
-INSERT INTO Users (Username, Password, Full_Name, Email, Gender, Age, Contact_No, Nationality, Is_Admin) VALUES 
+INSERT INTO Users (Username, Password, Full_Name, Email, Gender, Age, Contact_No, Nationality, Is_Admin) VALUES
 ('kat123','password123','Katherine Fennedy','katherine@gmail.com','F',21,'81818181','American', FALSE),
 ('wiryo1995','jamesgiggs','James Denny Wiryo','james@gmail.com','F',20,'88888888','African', FALSE),
 ('luccan','password123','Luccan Ryanata','luccan@gmail.com','M',22,'800080000','Bangladeshi', FALSE),
@@ -31,7 +30,7 @@ INSERT INTO Orders (Order_ID, Username,Order_Date) VALUES
 (9,'janicetyp','2015-11-05 00:00:00'),
 (10,'luccan','2015-11-06 00:00:00');
 
-INSERT INTO Order_Items (Order_ID, Product_ID, Quantity) VALUES 
+INSERT INTO Order_Items (Order_ID, Product_ID, Quantity) VALUES
 (1,1,50), (1,5,10),
 (2,1,50), (2,4,10),
 (3,1,50), (3,3,10),
