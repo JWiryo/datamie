@@ -26,9 +26,13 @@ class SessionController < ApplicationController
 	private
 
 	def authenticate(database_username, input_password)
-		@database_password = query_db("SELECT Password FROM users WHERE Username = '" + database_username.to_s + "' ; " ).each(:as => :array).join
-		if @database_password == input_password
-			return true
+		if !database_username.empty?
+			@database_password = query_db("SELECT Password FROM users WHERE Username = '" + database_username.to_s + "' ; " ).each(:as => :array).join
+			if @database_password == input_password
+				return true
+			else
+				return false
+			end
 		else
 			return false
 		end
