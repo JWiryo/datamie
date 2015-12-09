@@ -1,4 +1,17 @@
 <div class="container">
+
+	<%= form_tag products_path, :method => 'get' do %>
+	  <div class="navbar-form">
+			<div class="input-group searchsize">
+				<%= text_field_tag :search_flavour, params[:search], :class=>"form-control", :placeholder=>"enter flavour here" %>
+				<%= text_field_tag :search_qty, params[:search], :class=>"form-control", :placeholder=>"enter quantity here" %>
+				<div class="input-group-btn">
+				  <%= submit_tag "Search", :name => nil, :class=>"form-control" %>
+				</div>
+			</div>
+	  </div>
+	<% end %>
+
 	<div class="col-xs-8">
 		<h1>Products</h1>
 	</div>
@@ -7,6 +20,7 @@
 	</div>
 </div>
 
+
 <% if logged_in? %>
 <p>
 	<%= "Welcome! User " + $current_user + ". Have fun Shopping!"%>
@@ -14,21 +28,7 @@
 </p>
 <% end %>
 
-<!-- <div class="container">
-	<% @products.each do |row| %>
-		<div class="row">
-		<div class="well">
-			<div class="row">
-				<div class="col-xs-8">
-					<%= link_to row["Product_Name"], url_for(:controller => 'products', :action => 'show', :id => row["Product_ID"]) %>
-				</div>
-				<div class="col-xs-4">
-					<%= row["Stock_Qty"] %>
-				</div>
-			</div>
-		</div>
-		</div>
-	<% end %> -->
+
 <div class="container">"
 	<div class="rowProduct">
 		<% @products.each do |row| %>

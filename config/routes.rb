@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get 'products/:id' => 'products#show', :constraints => { :id => /[0-9|]+/ }
 
   get 'users' => 'users#index'
+  get 'profile' => 'users#show'
+  get 'signup' => 'users#signupform'
+  post 'signup' => 'users#signup'
 
   post 'ratings' => 'ratings#create'
   post 'helpfulness' => 'helpfulness#create'
@@ -19,6 +22,8 @@ Rails.application.routes.draw do
   get 'login' => 'session#new'
   post 'login' => 'session#create'
   delete 'logout'  => 'session#destroy'
+
+
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

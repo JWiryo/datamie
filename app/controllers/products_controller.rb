@@ -1,7 +1,23 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = query_db("SELECT * FROM products")
+    if params[:search_flavour].nil? && params[:search_qty].nil?
+      @products = query_db("SELECT * FROM products")
+    elsif params[:search_flavour].empty? && params[:search_qty].empty?
+      @products = query_db("SELECT * FROM products")
+    else
+      if params[:search_flavour].empty?
+        @qty = params[:search_qty]
+        @products = query_db("SELECT * FROM products WHERE Stock_Qty > "+@qty.to_s+";")
+      elsif params[:search_qty].empty?
+        @flavour = params[:search_flavour]
+        @products = query_db("SELECT * FROM products WHERE Product_Name LIKE '%"+@flavour.to_s+"%' AND Stock_Qty > 0;")
+      else
+        @flavour = params[:search_flavour]
+        @qty = params[:search_qty]
+        @products = query_db("SELECT * FROM products WHERE Product_Name LIKE '%"+@flavour.to_s+"%' AND Stock_Qty > "+@qty.to_s+";")
+      end
+    end
   end
 
   def show
