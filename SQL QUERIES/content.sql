@@ -4,7 +4,8 @@ INSERT INTO Users (Username, Password, Full_Name, Email, Gender, Age, Contact_No
 ('luccan','password123','Luccan Ryanata','luccan@gmail.com','M',22,'800080000','Bangladeshi', FALSE),
 ('ivanho','password123','Ivan Ho Sung Zhi','ivam@gmail.com','M',21,'81238123','Russian', FALSE),
 ('janicetyp','password123','Janice Tan Yen Ping','janice@gmail.com','F',16,'81010810','French', FALSE),
-('zhangmeihui','password123','Zhang Mei Hui','meihui@gmail.com','F',21,'91239123','Chinese', TRUE);
+('zhangmeihui','password123','Zhang Mei Hui','meihui@gmail.com','F',21,'91239123','Chinese', TRUE),
+('test','test','Tester','tester@gmail.com','M',99,'00000000','African', TRUE);
 
 INSERT INTO Products (Product_ID, Product_Name, Stock_Qty, Date_Added) VALUES
 (1,'Indomie Goreng',1,'2015-10-28 00:00:00'),
@@ -70,8 +71,8 @@ INSERT INTO Helpfulness (Rating_ID, Username, Score) VALUES
 (5,'wiryo1995',5),
 
 (7,'wiryo1995',4),
-(8,'wiryo1995',3),
-(9,'kat123',3),
+(9,'wiryo1995',3),
+(12,'kat123',3),
 (10,'luccan',2),
 (11,'luccan',2),
 (12,'luccan',2);
