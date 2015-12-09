@@ -1,0 +1,26 @@
+<div class="login">
+  <div class="container">
+    <div class="form">
+
+    <h1>Login</h1>
+
+    <%= form_for :users, url: url_for(:controller => "users", :action => "signup") do |f| %>
+      <%= f.text_field :username, :placeholder => "Username", class: "form-control" %>
+      <%= f.password_field :password, :placeholder => "Password", class: "form-control" %>
+      <%= f.text_field :fullname, :placeholder => "Fullname", class: "form-control" %>
+      <%= f.email_field :email, :placeholder => "Email", class: "form-control" %>
+      <h5> Gender </h5>
+      <%= f.radio_button :gender, 'M' %>
+      <%= label :gender_male, 'Male' %>
+      <%= f.radio_button :gender, 'F' %>
+      <%= label :gendeR_female, 'Female' %>
+      <%= f.number_field :age, :placeholder => "Age", class: "form-control" %>
+      <%= f.telephone_field :contactnum, :placeholder => "Contact Number", class: "form-control" %>
+      <%= f.text_field :nationality, :placeholder => "Nationality", class: "form-control" %>
+      <%= f.hidden_field :isadmin, :value => "0" %>
+      <%= f.submit "Sign Up", class: "btn btn-primary form-control" %>
+    <% end %>
+
+    </div>
+  </div>
+</div>
