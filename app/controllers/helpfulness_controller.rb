@@ -23,7 +23,10 @@ class HelpfulnessController < ApplicationController
 
   def prepare_product
     @rating_id = params[:helpfulness][:Rating_ID]
-    @product_id = query_db("SELECT Product_ID FROM Ratings WHERE rating_id = #{@rating_id}")
+    @product = query_db("SELECT Product_ID FROM Ratings WHERE rating_id = "+@rating_id+";")
+    @product_id = @product.first["Product_ID"]
+  end
+
   end
 
 end

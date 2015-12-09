@@ -60,7 +60,7 @@
 						<%= h.select :Score, ([['Very Useless', 0], ['Useless', 1], ['Average',2], ['Helpful', 3], ['Very Helpful', 4], ['Perfect', 5]]) %>
 						<%= h.submit :class=>"form-control btn btn-primary", :value=>"Submit" %>
 						<%= h.hidden_field :Rating_ID, :value => row["Rating_ID"] %>
-						<%= h.hidden_field :Username, :value => $current_user %>
+						<%= h.hidden_field :Username, :value => "kat123"%>
 					<% end %>
 				</div>
 
@@ -88,7 +88,7 @@
 				</div>
 				<%= f.hidden_field :Product_ID, :value => @product["Product_ID"] %>
 				<!-- TODO: username value should take that of the current session not hardcoded like this -->
-				<%= f.hidden_field :Username, :value => $current_user %>
+				<%= f.hidden_field :Username, :value => "kat123" %>
 			<% end %>
 		</div>
 	</div>
