@@ -5,4 +5,7 @@ class UsersController < ApplicationController
     @users = @client.query("SELECT * FROM users")
   end
 
+  def show
+  end
+
 end

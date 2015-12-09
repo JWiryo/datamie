@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'products/:id' => 'products#show', :constraints => { :id => /[0-9|]+/ }
 
   get 'users' => 'users#index'
+  get 'profile' => 'users#show'
 
   post 'ratings' => 'ratings#create'
   post 'helpfulness' => 'helpfulness#create'
