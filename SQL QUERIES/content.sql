@@ -17,7 +17,9 @@ INSERT INTO Products (Product_ID, Product_Name, Stock_Qty, Date_Added) VALUES
 (7,'Indomie Rendang',5,'2015-10-23 00:00:00'),
 (8,'Indomie Fish',17,'2015-10-23 00:00:00'),
 (9,'Indomie Mala',9,'2015-10-23 00:00:00'),
-(10,'Indomie Prata',35,'2015-10-23 00:00:00');
+(10,'Indomie Prata1',35,'2015-10-23 00:00:00'),
+(11,'Indomie Prata2',5,'2015-10-23 00:00:00'),
+(12,'Indomie Prata3',55,'2015-10-23 00:00:00');
 
 INSERT INTO Orders (Order_ID, Username,Order_Date) VALUES
 (1,'wiryo1995','2015-10-28 00:00:00'),
