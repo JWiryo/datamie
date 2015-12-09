@@ -57,10 +57,10 @@
 
 				<div class="col-xs-3">
 					<%= form_for :helpfulness, url: url_for(:controller => "helpfulness", :action => "create") do |h| %>
-						<%= h.select :Score, ([['Very Useless', 0], ['Useless', 1], ['Average',2], ['Helpful', 1], ['Very Helpful', 1]]) %>
+						<%= h.select :Score, ([['Very Useless', 0], ['Useless', 1], ['Average',2], ['Helpful', 3], ['Very Helpful', 4], ['Perfect', 5]]) %>
 						<%= h.submit :class=>"form-control btn btn-primary", :value=>"Submit" %>
 						<%= h.hidden_field :Rating_ID, :value => row["Rating_ID"] %>
-						<%= h.hidden_field :Username, :value => "luccan" %>
+						<%= h.hidden_field :Username, :value => "kat123"%>
 					<% end %>
 				</div>
 
