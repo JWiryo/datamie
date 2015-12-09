@@ -23,3 +23,29 @@ html, body {
     background-size: cover;
     -o-background-size: cover;
 }
+
+.card .card-img-top{
+	width: 100%;
+}
+.card {
+    padding: 10%;
+    margin: 10px 0 20px 0;
+    background-color: #FFFFFF;
+    border-top-width: 0;
+    border-bottom-width: 2px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.rowProduct{
+	margin-left: -20%
+	margin-right: -20%;
+}
+
