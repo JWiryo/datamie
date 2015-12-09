@@ -19,19 +19,19 @@ class SessionController < ApplicationController
 
 	end
 
+	def destroy
+		log_out
+		redirect_to root_url
+	end
+	
+	private
 	def authenticate(database_username, input_password)
 		if !database_username.empty?
-			@database_password = query_db("SELECT Password FROM users WHERE Username = '" + database_username.to_s + "' ; " ).each(:as => :array).join
+			@database_password = query_db("SELECT Password FROM users WHERE Username = '" + database_username.to_s + "' ; " ).first["Password"]
 			return true if @database_password == input_password
 		else
 			return false
 		end
-	end
-
-
-	def destroy
-		log_out
-		redirect_to root_url
 	end
 
 end
