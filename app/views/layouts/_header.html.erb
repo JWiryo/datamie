@@ -15,6 +15,11 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Products", products_path %></li>
+        <li>
+          <% if logged_in? %>
+            <%= link_to "Sign Out", logout_path, method: "delete" %>
+          <% end %>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div>
