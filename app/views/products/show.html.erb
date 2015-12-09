@@ -59,7 +59,11 @@
 					<%= form_for :helpfulness, url: url_for(:controller => "helpfulness", :action => "create") do |h| %>
 						<%= h.select :Score, ([['Very Useless', 0], ['Useless', 1], ['Average',2], ['Helpful', 1], ['Very Helpful', 1]]) %>
 						<% if logged_in? %>
-							<%= h.submit :class=>"form-control btn btn-primary", :value=>"Submit" %>
+							<% if row["Username"] == $current_user %>
+								<p> You cannot rate your own rating </p>
+							<% else %>
+								<%= h.submit :class=>"form-control btn btn-primary", :value=>"Submit" %>
+							<% end %>
 						<% else %>
 							<p> Please Login to Rate Helpfulness </p>
 						<% end %>
