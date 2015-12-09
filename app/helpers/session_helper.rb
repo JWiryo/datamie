@@ -16,16 +16,16 @@ module SessionHelper
 	end
 
 	def logged_in?
-    	if !$current_user.nil?
-    		return true
-    	else
-    		return false
-    	end
+  	if !$current_user.nil?
+  		return true
+  	else
+  		return false
   	end
+	end
 
-  	def log_out
-    	session.delete(:database_username)
-    	$current_user = nil
-  	end
+	def log_out
+  	session.delete(:database_username)
+  	$current_user = nil
+	end
 
 end
