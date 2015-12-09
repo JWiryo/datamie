@@ -58,15 +58,7 @@
 				<div class="col-xs-3">
 					<%= form_for :helpfulness, url: url_for(:controller => "helpfulness", :action => "create") do |h| %>
 						<%= h.select :Score, ([['Very Useless', 0], ['Useless', 1], ['Average',2], ['Helpful', 1], ['Very Helpful', 1]]) %>
-						<% if logged_in? %>
-							<% if row["Username"] == $current_user %>
-								<p> You cannot rate your own rating </p>
-							<% else %>
-								<%= h.submit :class=>"form-control btn btn-primary", :value=>"Submit" %>
-							<% end %>
-						<% else %>
-							<p> Please Login to Rate Helpfulness </p>
-						<% end %>
+						<%= h.submit :class=>"form-control btn btn-primary", :value=>"Submit" %>
 						<%= h.hidden_field :Rating_ID, :value => row["Rating_ID"] %>
 						<%= h.hidden_field :Username, :value => "luccan" %>
 					<% end %>
@@ -88,14 +80,10 @@
 					</div>
 					<div class="col-xs-4">
 						<p>Rating Score</p>
-						<%= f.number_field :Score, :class=>"form-control bfh-number", :min=>"1", :max=>"10", :placeholder=>"no decimals allowed", :value=>"0" %>
+						<%= f.number_field :Score, :class=>"form-control bfh-number", :min=>"0", :max=>"10", :placeholder=>"no decimals allowed" %>
 					</div>
 					<div class="col-xs-4">
-					<% if logged_in? %>
-							<%= f.submit :class=>" btn btn-success form-control" %>
-					<% else %>
-							<p> Please Login to submit a rating </p>
-					<% end %>
+						<%= f.submit :class=>" btn btn-success form-control" %>
 					</div>
 				</div>
 				<%= f.hidden_field :Product_ID, :value => @product["Product_ID"] %>
