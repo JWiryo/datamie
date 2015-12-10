@@ -13,6 +13,8 @@ class UsersController < ApplicationController
     @edit_age = @edit_profile[0][3]
     @edit_contactnum = @edit_profile[0][4]
     @edit_nationality = @edit_profile[0][5]
+
+    @orders = query_db("SELECT * FROM orders WHERE Username='#{$current_user}';")
   end
 
   def editform
