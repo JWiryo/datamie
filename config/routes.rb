@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   post 'edit' => 'users#edit'
   get 'changepassword' => 'users#changepassword'
 
+  get 'profile/:id' => 'users#showorder'
+
   post 'ratings' => 'ratings#create'
   post 'helpfulness' => 'helpfulness#create'
 

@@ -17,6 +17,11 @@ class UsersController < ApplicationController
     @orders = query_db("SELECT * FROM orders WHERE Username='#{$current_user}';")
   end
 
+  def showorder
+    @orderid = query_db("SELECT Order_ID FROM orders WHERE Username='#{$current_user}';")
+    @orderitems = query_db("SELECT * FROM order_items WHERE Order_ID='#{@orderid}';")
+  end
+
   def editform
     @edit_profile = query_db("SELECT Full_Name, Email, Gender, Age, Contact_No, Nationality FROM Users WHERE Username = '" +$current_user + "' ; " ).each(:as => :array)
     @edit_fullname = @edit_profile[0][0]
