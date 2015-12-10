@@ -1,1 +1,36 @@
 <h1> My Profile </h1>
+<h2> Welcome, <%= $current_user %>; Here is your Profile Summary </h2>
+
+<table>
+  <tr>
+    <th>Full Name:<br></th>
+    <th><%= @edit_fullname %><br></th>
+  </tr>
+  <tr>
+    <td>E-Mail Address:<br></td>
+    <td><%= @edit_email %><br></td>
+  </tr>
+  <tr>
+    <td>Gender:<br></td>
+    <td><%= @edit_gender %><br></td>
+  </tr>
+  <tr>
+    <td>Age:<br></td>
+    <td><%= @edit_age %><br></td>
+  </tr>
+  <tr>
+    <td>Contact Number:<br></td>
+    <td><%= @edit_contactnum %><br></td>
+  </tr>
+  <tr>
+    <td>Nationality:<br></td>
+    <td><%= @edit_nationality %><br></td>
+  </tr>
+</table>
+
+<%= button_to "Edit Profile", { :controller => 'users',
+  :action => 'editprofile'}, 
+  :method => :post %>
+<%= button_to "Change Password", { :controller => 'users',
+  :action => 'changepassword'}, 
+  :method => :post %>
