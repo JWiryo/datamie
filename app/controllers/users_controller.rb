@@ -15,10 +15,31 @@ class UsersController < ApplicationController
     @edit_nationality = @edit_profile[0][5]
   end
 
-  def editprofile
+  def editform
+    @edit_profile = query_db("SELECT Full_Name, Email, Gender, Age, Contact_No, Nationality FROM Users WHERE Username = '" +$current_user + "' ; " ).each(:as => :array)
+    @edit_fullname = @edit_profile[0][0]
+    @edit_email = @edit_profile[0][1]
+    @edit_gender = @edit_profile[0][2]
+    @edit_age = @edit_profile[0][3]
+    @edit_contactnum = @edit_profile[0][4]
+    @edit_nationality = @edit_profile[0][5]
   end
 
   def edit
+    @new_fullname = params[:users][:fullname]
+    @new_email = params[:users][:email]
+    @new_gender = params[:users][:gender]
+    @new_age = params[:users][:age]
+    @new_contactnum = params[:users][:contactnum]
+    @new_nationality = params[:users][:nationality]
+    query_db("UPDATE users SET 
+      Full_Name='#{@new_fullname}', 
+      Email='#{@new_email}', 
+      Age='#{@new_age}', 
+      Contact_No='#{@new_contactnum}', 
+      Nationality='#{@new_nationality}' 
+      WHERE Username='#{$current_user}';")
+    redirect_to users_path
   end
 
   def changepassword

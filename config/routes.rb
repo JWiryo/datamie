@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'profile' => 'users#show'
   get 'signup' => 'users#signupform'
   post 'signup' => 'users#signup'
-  get 'edit' => 'users#editprofile'
+  get 'edit' => 'users#editform'
   post 'edit' => 'users#edit'
   get 'changepassword' => 'users#changepassword'
 
