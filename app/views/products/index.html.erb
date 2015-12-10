@@ -12,27 +12,11 @@
 	  </div>
 	<% end %>
 
-	<div class="col-xs-8">
-		<h1>Products</h1>
-	</div>
-	<div class="col-xs-4">
-		<h1>Stock Quantity</h1>
-	</div>
-</div>
-
-
-<% if logged_in? %>
-<p>
-	<%= "Welcome! User " + $current_user + ". Have fun Shopping!"%>
-    <%= link_to "Sign Out", logout_path, method: "delete" %>
-</p>
-<% end %>
-
 
 <div class="container">"
 	<div class="rowProduct">
 		<% @products.each do |row| %>
-		
+
 			<div class="col-xs-3">
 				<div class="card" style="col-xs-6">
 				  <img src="http://i65.tinypic.com/b8lont.png"class="card-img-top"  alt="Card image"/>
