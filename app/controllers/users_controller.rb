@@ -26,20 +26,26 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @new_fullname = params[:users][:fullname]
-    @new_email = params[:users][:email]
-    @new_gender = params[:users][:gender]
-    @new_age = params[:users][:age]
-    @new_contactnum = params[:users][:contactnum]
-    @new_nationality = params[:users][:nationality]
-    query_db("UPDATE users SET 
-      Full_Name='#{@new_fullname}', 
-      Email='#{@new_email}', 
-      Age='#{@new_age}', 
-      Contact_No='#{@new_contactnum}', 
-      Nationality='#{@new_nationality}' 
-      WHERE Username='#{$current_user}';")
-    redirect_to users_path
+    begin
+      @new_fullname = params[:users][:fullname]
+      @new_email = params[:users][:email]
+      @new_gender = params[:users][:gender]
+      @new_age = params[:users][:age]
+      @new_contactnum = params[:users][:contactnum]
+      @new_nationality = params[:users][:nationality]
+      query_db("UPDATE users SET 
+        Full_Name='#{@new_fullname}', 
+        Email='#{@new_email}', 
+        Age='#{@new_age}', 
+        Contact_No='#{@new_contactnum}', 
+        Nationality='#{@new_nationality}' 
+        WHERE Username='#{$current_user}';")
+      redirect_to url_for(:controller => 'users', :action=>'show')
+      flash[:success] = "Profile Successfully Edited."
+    rescue Exception => e
+      redirect_to :back
+      flash[:danger] = e.message
+    end
   end
 
   def changepassword
