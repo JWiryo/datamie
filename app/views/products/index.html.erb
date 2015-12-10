@@ -1,37 +1,40 @@
-<div class="container">
-
+<div>
 	<%= form_tag products_path, :method => 'get' do %>
 	  <div class="navbar-form">
-			<div class="input-group searchsize">
+			<div class="input-group">
 				<%= text_field_tag :search_flavour, params[:search], :class=>"form-control", :placeholder=>"enter flavour here" %>
 				<%= text_field_tag :search_qty, params[:search], :class=>"form-control", :placeholder=>"enter quantity here" %>
-				<div class="input-group-btn">
-				  <%= submit_tag "Search", :name => nil, :class=>"form-control" %>
-				</div>
+				<strong>Sort= </strong>
+				<%= radio_button_tag(:sort, "AtoZ") %>
+				<%= label_tag(:sort_AtoZ, "From A to Z") %>
+				<%= radio_button_tag(:sort, "stock") %>
+				<%= label_tag(:sort_stock, "Decreasing Stock") %>
+				<%= radio_button_tag(:sort, "priceASC") %>
+				<%= label_tag(:sort_priceASC, "Increasing Price") %>
+				<%= radio_button_tag(:sort, "priceDESC") %>
+				<%= label_tag(:sort_priceDESC, "Decreasing Price") %>
+			<div class="input-group-btn">
+			  <%= submit_tag "Search", :name => nil, :class=>"form-control" %>
+			</div>
 			</div>
 	  </div>
 	<% end %>
+</div>
 
-
-<div class="container">"
-	<div class="rowProduct">
-		<% @products.each do |row| %>
-
-			<div class="col-xs-3">
-				<div class="card" style="col-xs-6">
-				  <img src="http://i65.tinypic.com/b8lont.png"class="card-img-top"  alt="Card image"/>
-
-				  <div class="card-block">
-				    <h4 class="card-title">
-				    	<%= link_to row["Product_Name"], url_for(:controller => 'products', :action => 'show', :id => row["Product_ID"]) %></h4>
-				    <div class="card-text">
-				    	Stock Left= <%= row["Stock_Qty"] %>
-				    </div>
-				    <a href="#" class="btn btn-primary">BUY</a>
-				  </div>
-				</div>
+<div>
+	<% @products.each do |row| %>
+		<div class="col-xs-3">
+			<div class="card" style="col-xs-6">
+			  <img src="http://i65.tinypic.com/b8lont.png"class="card-img-top"  alt="Card image"/>
+			  <div class="card-block">
+			    <h4 class="card-title">
+			    	<%= link_to row["Product_Name"], url_for(:controller => 'products', :action => 'show', :id => row["Product_ID"]) %></h4>
+			    <div class="card-text">
+			    	Stock Left= <%= row["Stock_Qty"] %>
+			    </div>
+			    <a href="#" class="btn btn-primary">BUY</a>
+			  </div>
 			</div>
-
-		<% end %>
-	</div>
+		</div>
+	<% end %>
 </div>
