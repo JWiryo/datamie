@@ -8,7 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
+	<script>
+		var homeUrl = '<%= request.base_url %>';
+	</script>
   <%= render 'layouts/header' %>
   <% if flash %>
     <% flash.each do |key,value| %>
