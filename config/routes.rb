@@ -19,10 +19,10 @@ Rails.application.routes.draw do
 
   get 'users' => 'users#index'
   get 'profile' => 'users#show'
-  get 'signup' => 'users#signupform'
-  post 'signup' => 'users#signup'
-  get 'edit' => 'users#editform'
-  post 'edit' => 'users#edit'
+  get 'signup' => 'users#new'
+  post 'signup' => 'users#create'
+  get 'edit' => 'users#edit'
+  post 'edit' => 'users#update'
   get 'changepassword' => 'users#changepassword'
 
   get 'profile/:id' => 'users#showorder'

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @orderitems = query_db("SELECT * FROM order_items WHERE Order_ID='#{@orderid}';")
   end
 
-  def editform
+  def edit
     @edit_profile = query_db("SELECT Full_Name, Email, Gender, Age, Contact_No, Nationality FROM Users WHERE Username = '" +$current_user + "' ; " ).each(:as => :array)
     @edit_fullname = @edit_profile[0][0]
     @edit_email = @edit_profile[0][1]
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @edit_nationality = @edit_profile[0][5]
   end
 
-  def edit
+  def update
     begin
       @new_fullname = params[:users][:fullname]
       @new_email = params[:users][:email]
@@ -35,12 +35,12 @@ class UsersController < ApplicationController
       @new_age = params[:users][:age]
       @new_contactnum = params[:users][:contactnum]
       @new_nationality = params[:users][:nationality]
-      query_db("UPDATE users SET 
-        Full_Name='#{@new_fullname}', 
-        Email='#{@new_email}', 
-        Age='#{@new_age}', 
-        Contact_No='#{@new_contactnum}', 
-        Nationality='#{@new_nationality}' 
+      query_db("UPDATE users SET
+        Full_Name='#{@new_fullname}',
+        Email='#{@new_email}',
+        Age='#{@new_age}',
+        Contact_No='#{@new_contactnum}',
+        Nationality='#{@new_nationality}'
         WHERE Username='#{$current_user}';")
       redirect_to url_for(:controller => 'users', :action=>'show')
       flash[:success] = "Profile Successfully Edited."
@@ -53,10 +53,10 @@ class UsersController < ApplicationController
   def changepassword
   end
 
-  def signupform
+  def new
   end
 
-  def signup
+  def create
   @signup_username = params[:users][:username]
 	@signup_password = params[:users][:password]
 	@signup_fullname = params[:users][:fullname]
