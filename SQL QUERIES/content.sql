@@ -4,7 +4,6 @@ INSERT INTO Users (Username, Password, Full_Name, Email, Gender, Age, Contact_No
 ('luccan','password123','Luccan Ryanata','luccan@gmail.com','M',22,'800080000','Bangladeshi', FALSE),
 ('ivanho','password123','Ivan Ho Sung Zhi','ivam@gmail.com','M',21,'81238123','Russian', FALSE),
 ('janicetyp','password123','Janice Tan Yen Ping','janice@gmail.com','F',16,'81010810','French', FALSE),
-('zhangmeihui','password123','Zhang Mei Hui','meihui@gmail.com','F',21,'91239123','Chinese', TRUE),
 ('test','test','Tester','tester@gmail.com','M',99,'00000000','African', TRUE);
 
 INSERT INTO Products (Product_ID, Product_Name, Stock_Qty, Date_Added) VALUES

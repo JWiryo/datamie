@@ -5,9 +5,19 @@ class ApplicationController < ActionController::Base
   include SessionHelper
 
   protected
+
   def query_db(querystr)
     @client = Mysql2::Client.new(:database => "datamie", :host => "localhost", :username => "datamie", :password => "")
     @result = @client.query(querystr)
 	return @result
   end
+
+  def authorize
+    unless $is_admin
+      flash[:error] = "unauthorized access"
+      redirect_to root_path
+      false
+    end
+  end
+
 end

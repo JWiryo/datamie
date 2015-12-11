@@ -3,7 +3,6 @@ class ProductsController < ApplicationController
   before_action :prepare_sort, only: [:index]
 
   def index
-    puts params
     if params[:search_flavour].nil? && params[:search_qty].nil?
       @products = query_db("SELECT * FROM products "+@sort.to_s+";")
     elsif params[:search_flavour].empty? && params[:search_qty].empty?

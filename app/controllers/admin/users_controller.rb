@@ -1,11 +1,13 @@
 class Admin::UsersController < ApplicationController
 
+  before_action :authorize
+
   def index
-    @client = Mysql2::Client.new(:database => "datamie", :host => "localhost", :username => "datamie", :password => "")
-    @users = @client.query("SELECT * FROM users")
+    @users = query_db("SELECT * FROM users")
   end
 
   def show
+    # redirect_to url_for(:controller => 'users', :action => 'show', :id => 1)
   end
 
 end
