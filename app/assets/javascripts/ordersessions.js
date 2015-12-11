@@ -69,8 +69,9 @@ function removeFromCartOnClick(target){
 	});
 }
 
-$(document).ready(function(e) {
+function preload(){
+	console.log('preload...');
 	$('.btn-add-to-cart').click(function(e){ addToCartOnClick(this) });
 	$('.btn-update-cart').click(function(e){ updateCartOnClick(this) });
 	$('.btn-remove-from-cart').click(function(e){ removeFromCartOnClick(this) });
-});
+}

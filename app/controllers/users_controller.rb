@@ -11,7 +11,10 @@ class UsersController < ApplicationController
 
     @orders = query_db("SELECT * FROM orders WHERE Username='#{$current_user}';")
 
-    @ratings = query_db("SELECT * FROM ratings WHERE Username='#{$current_user}';")
+    @ratings = query_db("SELECT A.*, B.Product_Name FROM ratings as A
+												inner join products as B
+												on A.Product_ID = B.Product_ID
+												WHERE A.Username='#{$current_user}';")
   end
 
   def showorder

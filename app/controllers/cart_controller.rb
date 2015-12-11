@@ -2,12 +2,17 @@ class CartController < ApplicationController
 	include OrdersessionHelper
 
   def index
-		products_unfiltered = query_db("SELECT * FROM products ORDER BY Product_Name ASC;")
-		@products = []
-		products_unfiltered.each do |row|
-			if orders_get_quantity(row["Product_ID"]) > 0
-				@products << row
+		if !$current_user.nil?
+			products_unfiltered = query_db("SELECT * FROM products ORDER BY Product_Name ASC;")
+			@products = []
+			products_unfiltered.each do |row|
+				if orders_get_quantity(row["Product_ID"]) > 0
+					@products << row
+				end
 			end
+		else
+			#prevent user from accessing forbidden areas if not logged in
+			redirect_to url_for(:controller => 'products', :action => 'index')
 		end
   end
 	

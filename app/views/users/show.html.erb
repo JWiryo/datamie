@@ -63,7 +63,7 @@
     <tr>
       <th>Rating ID</th>
       <th>Rating Date</th>
-      <th>Product ID</th>
+      <th>Product Name</th>
       <th>Rating Score</th>
       <th>Rating Description</th>
     </tr>
@@ -71,9 +71,9 @@
   <tbody>
     <% @ratings.each do |row| %>
     <tr>
-      <td><%= link_to row["Rating_ID"], url_for(:controller => 'products', :action => 'show', :id => row["Product_ID"])%></td>
+      <td><%= row["Rating_ID"] %></td>
       <td><%= row["Date"] %></td>
-      <td><%= row["Product_ID"] %></td>
+      <td><%= link_to row["Product_Name"], url_for(:controller => 'products', :action => 'show', :id => row["Product_ID"])%></td>
       <td><%= row["Score"] %></td>
       <td><%= row["Description"] %></td>
     </tr>
