@@ -1,10 +1,5 @@
 class UsersController < ApplicationController
 
-  def index
-    @client = Mysql2::Client.new(:database => "datamie", :host => "localhost", :username => "datamie", :password => "")
-    @users = @client.query("SELECT * FROM users")
-  end
-
   def show
     @edit_profile = query_db("SELECT Full_Name, Email, Gender, Age, Contact_No, Nationality FROM Users WHERE Username = '" +$current_user + "' ; " ).each(:as => :array)
     @edit_fullname = @edit_profile[0][0]
