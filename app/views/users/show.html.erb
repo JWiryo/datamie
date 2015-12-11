@@ -35,39 +35,21 @@
   :action => 'changepassword'},
   :method => :post %>
 
-<div class="row">
-  <div class="col-xs-3">
-    <h2>Order ID</h2>
-  </div>
-  <div class="col-xs-3">
-    <h2>Order Date</h2>
-  </div>
-  <div class="col-xs-3">
-    <h2>Order Status</h2>
-  </div>
-</div>
-
-<% @orders.each do |row| %>
-  <div class="row">
-  <div class="well">
-
-    <div class="row">
-      <div class="col-xs-3">
-        <%= link_to row["Order_ID"], url_for(:controller => 'users', :action => 'showorder', :id => row["Order_ID"]) %></h4>
-      </div>
-    </div>
-
-    <div class="row">
-
-      <div class="col-xs-3">
-        <%= row["Order_Date"] %>
-      </div>
-
-      <div class="col-xs-3">
-        <%= row["Order_Status"] %>
-      </div>
-
-    </div>
-  </div>
-  </div>
-<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Order Date</th>
+      <th>Order Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |row| %>
+    <tr>
+      <td><%= link_to row["Order_ID"], url_for(:controller => 'users', :action => 'showorder', :id => row["Order_ID"]) %></td>
+      <td><%= row["Order_Date"] %></td>
+      <td><%= row["Order_Status"] %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
