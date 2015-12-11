@@ -82,7 +82,7 @@
 						<%= h.select :Score, ([['Very Useless', 0], ['Useless', 1], ['Average',2], ['Helpful', 3], ['Very Helpful', 4], ['Perfect', 5]]) %>
 						<%= h.submit :class=>"form-control btn btn-primary", :value=>"Submit" %>
 						<%= h.hidden_field :Rating_ID, :value => row["Rating_ID"] %>
-						<%= h.hidden_field :Username, :value => "kat123"%>
+						<%= h.hidden_field :Username, :value => $current_user%>
 					<% end %>
 				</div>
 
