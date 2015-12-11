@@ -8,12 +8,46 @@ class UsersController < ApplicationController
     @edit_age = @edit_profile[0][3]
     @edit_contactnum = @edit_profile[0][4]
     @edit_nationality = @edit_profile[0][5]
+
+    @orders = query_db("SELECT * FROM orders WHERE Username='#{$current_user}';")
   end
 
-  def editprofile
+  def showorder
+    @orderid = query_db("SELECT Order_ID FROM orders WHERE Username='#{$current_user}';")
+    @orderitems = query_db("SELECT * FROM order_items WHERE Order_ID='#{@orderid}';")
+  end
+
+  def editform
+    @edit_profile = query_db("SELECT Full_Name, Email, Gender, Age, Contact_No, Nationality FROM Users WHERE Username = '" +$current_user + "' ; " ).each(:as => :array)
+    @edit_fullname = @edit_profile[0][0]
+    @edit_email = @edit_profile[0][1]
+    @edit_gender = @edit_profile[0][2]
+    @edit_age = @edit_profile[0][3]
+    @edit_contactnum = @edit_profile[0][4]
+    @edit_nationality = @edit_profile[0][5]
   end
 
   def edit
+    begin
+      @new_fullname = params[:users][:fullname]
+      @new_email = params[:users][:email]
+      @new_gender = params[:users][:gender]
+      @new_age = params[:users][:age]
+      @new_contactnum = params[:users][:contactnum]
+      @new_nationality = params[:users][:nationality]
+      query_db("UPDATE users SET 
+        Full_Name='#{@new_fullname}', 
+        Email='#{@new_email}', 
+        Age='#{@new_age}', 
+        Contact_No='#{@new_contactnum}', 
+        Nationality='#{@new_nationality}' 
+        WHERE Username='#{$current_user}';")
+      redirect_to url_for(:controller => 'users', :action=>'show')
+      flash[:success] = "Profile Successfully Edited."
+    rescue Exception => e
+      redirect_to :back
+      flash[:danger] = e.message
+    end
   end
 
   def changepassword
