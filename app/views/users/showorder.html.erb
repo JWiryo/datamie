@@ -19,7 +19,7 @@
       <div class="row">
 
         <div class="col-xs-3">
-          <%= @productsandname[row1[1]] %>
+          <%= link_to @productsandname[row1[1]], controller: "products", action: "show", id: row1[1] %>
         </div>
 
         <div class="col-xs-3">
