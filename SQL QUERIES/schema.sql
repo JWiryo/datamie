@@ -14,9 +14,9 @@ CREATE TABLE Users(
 	Gender VARCHAR(1) CHECK (Gender='F' OR 'M'),
 	Age INTEGER,
 	Contact_No VARCHAR(255),
-    Nationality VARCHAR(255),
-    Is_Admin BOOLEAN,
-    PRIMARY KEY (Username)
+  Nationality VARCHAR(255),
+  Is_Admin BOOLEAN,
+  PRIMARY KEY (Username)
 );
 
 delimiter //
@@ -82,11 +82,11 @@ delimiter ;
 
 CREATE TABLE Orders(
 	Order_ID BIGINT NOT NULL AUTO_INCREMENT,
-    Username VARCHAR(255) NOT NULL,
+  Username VARCHAR(255) NOT NULL,
 	Order_Date DATETIME NOT NULL,
-    Order_Status VARCHAR(255) CHECK (Order_Status='Pending' OR 'Submitted' OR 'Confirmed'),
-    PRIMARY KEY (Order_ID),
-    FOREIGN KEY (Username) REFERENCES Users(Username)
+  Order_Status VARCHAR(255) CHECK (Order_Status='Pending' OR 'Submitted' OR 'Confirmed'),
+  PRIMARY KEY (Order_ID),
+  FOREIGN KEY (Username) REFERENCES Users(Username)
 );
 
 delimiter //
@@ -111,10 +111,10 @@ delimiter ;
 CREATE TABLE Order_Items(
 	Order_ID BIGINT NOT NULL,
 	Product_ID BIGINT NOT NULL,
-    Quantity INTEGER NOT NULL DEFAULT 1,
-    PRIMARY KEY (Order_ID, Product_ID),
-    FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID),
-    FOREIGN KEY (Product_ID) REFERENCES Products(Product_ID)
+  Quantity INTEGER NOT NULL DEFAULT 1,
+  PRIMARY KEY (Order_ID, Product_ID),
+  FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID),
+  FOREIGN KEY (Product_ID) REFERENCES Products(Product_ID)
 );
 
 CREATE TABLE Ratings(
