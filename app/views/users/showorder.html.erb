@@ -1,4 +1,4 @@
-<h1> My Profile </h1>
+<h1> Summary of Your Purchase with Order ID: <%= @oid %> </h1>
 
 <div class="row">
     <div class="col-xs-3">
@@ -9,17 +9,25 @@
     </div>
 </div>
 
-<% @orderitems.each do |row| %>
-  <div class="row">
-  <div class="well">
-    <div class="row">
-      <div class="col-xs-3">
-        <%= row["Product_ID"] %>
-      </div>
-      <div class="col-xs-3">
-        <%= row["Quantity"] %>
+<!-- <%= @orderitemsall[0] %> -->
+
+<% @orderitemsall.each do |row1| %>
+    <% if row1[0] == @oid.to_i %>
+      <div class="row">
+      <div class="well">
+
+      <div class="row">
+
+        <div class="col-xs-3">
+          <%= @productsandname[row1[1]] %>
+        </div>
+
+        <div class="col-xs-3">
+          <%= row1[2] %>
+        </div>
+
       </div>
     </div>
-  </div>
-  </div>
+    </div>
+  <% end %>
 <% end %>

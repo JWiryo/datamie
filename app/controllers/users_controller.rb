@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-    @edit_profile = query_db("SELECT Full_Name, Email, Gender, Age, Contact_No, Nationality FROM Users WHERE Username = '" +$current_user + "' ; " ).each(:as => :array)
+    @edit_profile = query_db("SELECT Full_Name, Email, Gender, Age, Contact_No, Nationality FROM Users WHERE Username = '" + $current_user + "' ; " ).each(:as => :array)
     @edit_fullname = @edit_profile[0][0]
     @edit_email = @edit_profile[0][1]
     @edit_gender = @edit_profile[0][2]
@@ -13,8 +13,46 @@ class UsersController < ApplicationController
   end
 
   def showorder
+    @oid = params[:id]
     @orderid = query_db("SELECT Order_ID FROM orders WHERE Username='#{$current_user}';")
-    @orderitems = query_db("SELECT * FROM order_items WHERE Order_ID='#{@orderid}';")
+    @orderitemsall = query_db("SELECT * FROM order_items ;").each(:as => :array)
+    @orderitems = query_db("SELECT * FROM order_items WHERE Order_ID='#{@id}';").each(:as => :array)
+
+    @productsname = query_db("SELECT Product_Name FROM products;")
+
+    @productsandname = Hash.new
+
+    i = 1
+
+    @productsname.each do |id|
+      @productsandname[i] = id["Product_Name"]
+      i = i + 1
+    end
+
+    # @orderitemsall.each do |row|
+    #   if row[0] == @oid.to_i
+    #     puts row[0]
+    #   end
+    # end
+
+    # puts @orderitemsall.to_s
+
+    # if @orderitemsall[0][0] == 1 then
+    #   puts 'TRUE'
+    # else
+    #   puts 'FALSE'
+    # end
+
+    #puts @productsandname
+    #puts "id = #{@id}" 
+
+    # puts @orderid.first["Order_ID"]
+    # @orderitemsall.each do |row|
+    #   if row[0] == @orderid.first["Order_ID"]
+    #     puts "yes"
+    #   end
+    # end
+
   end
 
   def edit
