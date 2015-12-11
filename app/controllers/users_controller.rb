@@ -10,6 +10,8 @@ class UsersController < ApplicationController
     @edit_nationality = @edit_profile[0][5]
 
     @orders = query_db("SELECT * FROM orders WHERE Username='#{$current_user}';")
+
+    @ratings = query_db("SELECT * FROM ratings WHERE Username='#{$current_user}';")
   end
 
   def showorder
