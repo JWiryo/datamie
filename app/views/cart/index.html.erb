@@ -1,0 +1,32 @@
+<div>
+	<h1>My Cart</h1>
+	<% @products.each do |row| %>
+		<div class="row">
+		<div class="well">
+			<div class="row">
+				<div class="col-xs-3">
+					<%= link_to row["Product_Name"], url_for(:controller => 'products', :action => 'show', :id => row["Product_ID"]) %>
+				</div>
+				<div class="col-xs-2">
+					SGD <%= sprintf('%.2f', row["Price"]) %>
+				</div>
+				<div class="col-xs-1">
+					<%= row["Stock_Qty"] %>
+				</div>
+				<div class="col-xs-6">
+					<div class="col-xs-4">
+						<input class="form-control bfh-number" type="number" value="<%= orders_get_quantity(row["Product_ID"]).to_i %>" min="0" name="orderqty_<%= row["Product_ID"] %>" id="orderqty_<%= row["Product_ID"] %>">
+					</div>
+					<div class="col-xs-4">
+						<button class="form-control btn btn-primary btn-update-cart" id="<%= row["Product_ID"] %>">Update Cart</button>
+					</div>
+					<div class="col-xs-4">
+						<button class="form-control btn btn-primary btn-remove-from-cart" id="<%= row["Product_ID"] %>">Remove From Cart</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	<% end %>
+	
+</div>

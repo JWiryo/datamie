@@ -57,6 +57,7 @@ CREATE TABLE Products(
 	Product_ID BIGINT NOT NULL AUTO_INCREMENT,
 	Product_Name VARCHAR(255) NOT NULL,
   Stock_Qty INTEGER NOT NULL DEFAULT 0,
+  Price FLOAT NOT NULL DEFAULT 0.00,
   Date_Added DATETIME NOT NULL,
   Last_Updated DATETIME CHECK (Last_Updated > Date_Added),
   PRIMARY KEY (Product_ID)

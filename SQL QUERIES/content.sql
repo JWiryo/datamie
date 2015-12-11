@@ -6,19 +6,19 @@ INSERT INTO Users (Username, Password, Full_Name, Email, Gender, Age, Contact_No
 ('janicetyp','password123','Janice Tan Yen Ping','janice@gmail.com','F',16,'81010810','French', FALSE),
 ('test','test','Tester','tester@gmail.com','M',99,'00000000','African', TRUE);
 
-INSERT INTO Products (Product_ID, Product_Name, Stock_Qty, Date_Added) VALUES
-(1,'Indomie Goreng',1,'2015-10-28 00:00:00'),
-(2,'Indomie Bakso',5,'2015-10-23 00:00:00'),
-(3,'Indomie Soto',3,'2015-10-23 00:00:00'),
-(4,'Indomie Ayam',20,'2015-10-23 00:00:00'),
-(5,'Indomie Curry',10,'2015-10-23 00:00:00'),
-(6,'Indomie Cheese',6,'2015-10-23 00:00:00'),
-(7,'Indomie Rendang',5,'2015-10-23 00:00:00'),
-(8,'Indomie Fish',17,'2015-10-23 00:00:00'),
-(9,'Indomie Mala',9,'2015-10-23 00:00:00'),
-(10,'Indomie Prata1',35,'2015-10-23 00:00:00'),
-(11,'Indomie Prata2',5,'2015-10-23 00:00:00'),
-(12,'Indomie Prata3',55,'2015-10-23 00:00:00');
+INSERT INTO Products (Product_ID, Product_Name, Stock_Qty, Price, Date_Added) VALUES
+(1,'Indomie Goreng',1,1.25,'2015-10-28 00:00:00'),
+(2,'Indomie Bakso',5,1.30,'2015-10-23 00:00:00'),
+(3,'Indomie Soto',3,1.30,'2015-10-23 00:00:00'),
+(4,'Indomie Ayam',20,1.30,'2015-10-23 00:00:00'),
+(5,'Indomie Curry',10,1.30,'2015-10-23 00:00:00'),
+(6,'Indomie Cheese',6,1.50,'2015-10-23 00:00:00'),
+(7,'Indomie Rendang',5,1.30,'2015-10-23 00:00:00'),
+(8,'Indomie Fish',17,1.40,'2015-10-23 00:00:00'),
+(9,'Indomie Mala',9,1.40,'2015-10-23 00:00:00'),
+(10,'Indomie Prata1',1.00,35,'2015-10-23 00:00:00'),
+(11,'Indomie Prata2',5,1.10,'2015-10-23 00:00:00'),
+(12,'Indomie Prata3',55,1.20,'2015-10-23 00:00:00');
 
 INSERT INTO Orders (Order_ID, Username,Order_Date) VALUES
 (1,'wiryo1995','2015-10-28 00:00:00'),

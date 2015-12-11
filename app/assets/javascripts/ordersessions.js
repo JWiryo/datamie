@@ -1,6 +1,10 @@
 function addToCartOnClick(target){
+	var quantity = 1;
+	if ($('#orderqty_'+target.id.toString()).val() !== undefined){
+		quantity = $('#orderqty_'+target.id.toString()).val();
+	}
 	$.post( homeUrl+'/ordersession/orders_add', 
-					{ product_id: target.id, quantity: 1})//$('#orderqty_'+target.id.toString()).val() })
+					{ product_id: target.id, quantity: quantity})
 	.done(function( data ) {
 		console.log(data);
 		if(data.error===undefined){
@@ -20,8 +24,12 @@ function addToCartOnClick(target){
 }
 
 function updateCartOnClick(target){
+	var quantity = 1;
+	if ($('#orderqty_'+target.id.toString()).val() !== undefined){
+		quantity = $('#orderqty_'+target.id.toString()).val();
+	}
 	$.post( homeUrl+'/ordersession/orders_update', 
-					{ product_id: target.id, quantity: 1})//$('#orderqty_'+target.id.toString()).val() })
+					{ product_id: target.id, quantity: quantity})//$('#orderqty_'+target.id.toString()).val() })
 	.done(function( data ) {
 		console.log(data);
 		if(data.error===undefined){

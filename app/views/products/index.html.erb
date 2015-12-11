@@ -32,14 +32,15 @@
 			    <h4 class="card-title">
 			    	<%= link_to row["Product_Name"], url_for(:controller => 'products', :action => 'show', :id => row["Product_ID"]) %></h4>
 			    <div class="card-text">
+						SGD <%= sprintf('%.2f', row["Price"]) %><br/>
 			    	Stock Left= <%= row["Stock_Qty"] %>
 			    </div>
 					<% if logged_in? %>
 						<% if orders_get_quantity(row["Product_ID"]).to_i==0 %>
 							<!--input class="form-control bfh-number" type="number" value="<%= orders_get_quantity(row["Product_ID"]).to_i %>" min="0" name="orderqty_<%= row["Product_ID"] %>" id="orderqty_<%= row["Product_ID"] %>"-->
-							<a href="#" class="btn btn-primary btn-add-to-cart" id="<%= row["Product_ID"] %>">BUY</a>
+							<button class="btn btn-primary btn-add-to-cart" id="<%= row["Product_ID"] %>">BUY</button>
 						<% else %>
-							<a href="#" class="btn btn-primary btn-remove-from-cart" id="<%= row["Product_ID"] %>">CANCEL</a>
+							<button class="btn btn-primary btn-remove-from-cart" id="<%= row["Product_ID"] %>">CANCEL</button>
 						<% end %>
 					<% end %>
 			  </div>

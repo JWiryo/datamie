@@ -17,6 +17,9 @@
         <% if $is_admin %>
           <li><%= link_to "Dashboard", admin_dashboard_index_path %></li>
         <% end %>
+				<% if !$current_user.nil? %>
+          <li><%= link_to "View Cart", url_for(:controller => 'cart', :action => 'index') %></li>
+        <% end %>
         <li><%= link_to "Products", products_path %></li>
         <% if logged_in? %>
           <li><%= link_to "Profile", profile_path %></li>
