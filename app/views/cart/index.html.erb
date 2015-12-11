@@ -28,5 +28,18 @@
 		</div>
 		</div>
 	<% end %>
+	<% if @products.any? %>
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-10">
+				<%= form_for :cart, url: url_for(:controller => "cart", :action => "submit") do |f| %>
+					<button class="form-control btn btn-primary" id="btn-submit-order">Order!</button>
+				<% end %>
+			</div>
+		</div>
+	<% else %>
+		<div class="row">
+			<p class="lead">Oops! Seems like you are missing out on delicious indomie!</p>
+		</div>
+	<% end %>
 	
 </div>

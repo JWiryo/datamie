@@ -1,13 +1,11 @@
 class OrdersessionController < ApplicationController
 
+	before_action :initialize_session
+	
 	#remote controller should only return once
 	def orders_add
 		@product_id = params[:product_id].to_i
 		@quantity = params[:quantity].to_i
-		
-		if session[:orders].nil?
-			session[:orders] = []
-		end
 		
 		found = false
 		session[:orders].each do |order|
@@ -85,6 +83,13 @@ class OrdersessionController < ApplicationController
 			format.json { render json: { error: "Product not in cart. Please refresh page and try again."} }
 		end
 		return
+	end
+	
+	private
+	def initialize_session
+		if session[:orders].nil?
+			session[:orders] = []
+		end
 	end
 
 end

@@ -40,6 +40,7 @@ Rails.application.routes.draw do
 	post 'ordersession/orders_remove'  => 'ordersession#orders_remove'
 
 	get 'cart'  => 'cart#index'
+	post 'cart/submit'  => 'cart#submit'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
