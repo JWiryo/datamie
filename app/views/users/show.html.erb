@@ -35,6 +35,8 @@
   :action => 'changepassword'},
   :method => :post %>
 
+<h1> Here is Your Orders Summary </h1>
+
 <table class="table">
   <thead>
     <tr>
@@ -49,6 +51,31 @@
       <td><%= link_to row["Order_ID"], url_for(:controller => 'users', :action => 'showorder', :id => row["Order_ID"]) %></td>
       <td><%= row["Order_Date"] %></td>
       <td><%= row["Order_Status"] %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h1> Here is Your Rating Summary </h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Rating ID</th>
+      <th>Rating Date</th>
+      <th>Product ID</th>
+      <th>Rating Score</th>
+      <th>Rating Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ratings.each do |row| %>
+    <tr>
+      <td><%= link_to row["Rating_ID"], url_for(:controller => 'products', :action => 'show', :id => row["Product_ID"])%></td>
+      <td><%= row["Date"] %></td>
+      <td><%= row["Product_ID"] %></td>
+      <td><%= row["Score"] %></td>
+      <td><%= row["Description"] %></td>
     </tr>
     <% end %>
   </tbody>
