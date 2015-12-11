@@ -4,6 +4,7 @@ module SessionHelper
 	def log_in(database_username)
 		session[:username] = database_username
 		$current_user = database_username
+		session[:orders] = nil
 	end
 
 	def logged_in?
@@ -15,8 +16,10 @@ module SessionHelper
 	end
 
 	def log_out
-		session.delete(:database_username)
+		#session.delete(:database_username)
+		session[:username] = nil
 		$current_user = nil
+		session[:orders] = nil
 		$is_admin = false
 	end
 
