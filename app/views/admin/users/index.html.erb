@@ -1,0 +1,29 @@
+<h1>All Accounts</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>Contact</th>
+      <th>Nationality</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |u| %>
+    <tr>
+      <!-- TODO: make username linkable to user#show -->
+      <td><%=u["Username"]%></td>
+      <td><%=u["Full_Name"]%></td>
+      <td><%=u["Email"]%></td>
+      <td><%=u["Gender"]%></td>
+      <td><%=u["Age"]%></td>
+      <td><%=u["Contact_No"]%></td>
+      <td><%=u["Nationality"]%></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

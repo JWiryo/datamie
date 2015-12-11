@@ -1,12 +1,15 @@
 #### TODO LIST
-1. User Signup + ~~SignIn~~ + SignOut (James)
-2. Database Maintenance + Convert to BCNF (Luccan)
-3. Rating and Helpfulness implementation (Kat)
-4. Front-End Bootstrap (Ivan)
-5. Ordering of Indomies
-6. Browsing of Indomies
-7. Admin Page + Statistics
-8. Report (Janice)
+1. ~~User Signup + SignIn + SignOut~~ (James)
+2. User Records [account info, history of orders, history of ratings and its corresponding usefulness] (James)
+3. ~~Rating and Helpfulness implementation~~ (Kat)
+4. Arrival of new Indomies by admin, update inventory ()
+5. Purchasing of Indomies (Luccan)
+6. ~~Browsing of Indomies~~ in order(not yet by Kat)
+7. Indomie Recommendation
+8. Admin Page + Statistics
+9. Front-End Bootstrap (Ivan)
+10. Database Maintenance(Luccan)
+11. Report (Janice)
 
 ## Getting Started
 

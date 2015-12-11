@@ -6,12 +6,27 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'home#index'
 
+  namespace :admin do
+    resources :dashboard, only: [:index]
+    resources :users, only: [:index, :show]
+    resources :products, only: [:index, :new, :create]
+  end
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   get 'products' => 'products#index'
   get 'products/:id' => 'products#show', :constraints => { :id => /[0-9|]+/ }
 
   get 'users' => 'users#index'
+  get 'profile' => 'users#show'
+  get 'signup' => 'users#new'
+  post 'signup' => 'users#create'
+  get 'edit' => 'users#edit'
+  post 'edit' => 'users#update'
+  get 'changepassword' => 'users#changepassword'
+
+  get 'profile/:id' => 'users#showorder'
 
   post 'ratings' => 'ratings#create'
   post 'helpfulness' => 'helpfulness#create'
@@ -23,6 +38,8 @@ Rails.application.routes.draw do
 	post 'ordersession/orders_add'  => 'ordersession#orders_add'
 	post 'ordersession/orders_update'  => 'ordersession#orders_update'
 	post 'ordersession/orders_remove'  => 'ordersession#orders_remove'
+
+
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

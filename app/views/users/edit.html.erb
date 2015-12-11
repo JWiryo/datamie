@@ -1,0 +1,21 @@
+<div class="login col-xs-offset-2 col-xs-8">
+  <div class="form">
+
+  <h1>Edit Profile</h1>
+
+  <%= form_for :users, url: url_for(:controller => "users", :action => "edit") do |f| %>
+    <%= f.text_field :fullname, :placeholder => "Fullname", :required => true, :value => @edit_fullname, class: "form-control" %>
+    <%= f.email_field :email, :placeholder => "Email", :required => true, :value => @edit_email, class: "form-control" %>
+    <h5> Gender </h5>
+    <%= f.radio_button :gender, 'M' %>
+    <%= label :gender_male, 'Male' %>
+    <%= f.radio_button :gender, 'F' %>
+    <%= label :gender_female, 'Female' %>
+    <%= f.number_field :age, :placeholder => "Age", :required => true, :value => @edit_age, class: "form-control" %>
+    <%= f.telephone_field :contactnum, :placeholder => "Contact Number", :value => @edit_contactnum, :required => true, class: "form-control" %>
+    <%= f.text_field :nationality, :placeholder => "Nationality", :value => @edit_nationality, :required => true, class: "form-control" %>
+    <%= f.submit "Edit", class: "btn btn-primary form-control" %>
+  <% end %>
+
+  </div>
+</div>
