@@ -43,3 +43,12 @@ html, body {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+.table > thead > tr > th {
+  background-color: black;
+  color: white;
+}
+
+.table > tbody > tr > td {
+  background-color: white;
+}
