@@ -4,9 +4,9 @@ class ProductsController < ApplicationController
 
   def index
     if params[:search_flavour].nil? && params[:search_qty].nil?
-      @products = query_db("SELECT * FROM products "+@sort.to_s+";")
+      @products = query_db(@sort.to_s)
     elsif params[:search_flavour].empty? && params[:search_qty].empty?
-      @products = query_db("SELECT * FROM products "+@sort.to_s+";")
+      @products = query_db(@sort.to_s)
     else
       if params[:search_flavour].empty?
         @qty = params[:search_qty]
@@ -42,11 +42,19 @@ class ProductsController < ApplicationController
   private
 
   def prepare_sort
-    @sort = "" if params[:sort].nil?
-    @sort = "ORDER BY Product_Name ASC" if params[:sort]=="AtoZ"
-    @sort = "ORDER BY Stock_Qty DESC" if params[:sort]=="stock"
+    @sort = "SELECT * FROM products;" if params[:sort].nil?
+    @sort = "SELECT * FROM products ORDER BY Product_Name ASC;" if params[:sort]=="AtoZ"
+    @sort = "SELECT * FROM products ORDER BY Stock_Qty DESC;" if params[:sort]=="stock"
+    # TODO: Add price when luccan is done
     # @sort = "ORDER BY Price ASC" if params[:sort]=="priceASC"
     # @sort = "ORDER BY Price DESC" if params[:sort]=="priceDESC"
+    @sort = "SELECT * FROM ( SELECT Product_ID, SUM(Quantity) AS amt_sold FROM Order_Items
+    				WHERE Order_Id IN (SELECT Order_Id FROM Orders
+    				WHERE Order_Date >= DATE_FORMAT(sysdate(), '%Y-%m-01'))
+    				GROUP BY Product_ID) A
+    inner join Products B
+    on A.Product_ID = B.Product_ID
+    Order By A.amt_sold DESC;" if params[:sort]=="popular"
   end
 
 end
