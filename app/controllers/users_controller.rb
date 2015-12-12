@@ -25,16 +25,12 @@ class UsersController < ApplicationController
       @helpfulnessandid[row["Rating_ID"]] = row["Score"]
     end
 
-    puts @helpfulnessandid
-
     @helpfulnessandid.each do |key, value|
       @ratingshelp = query_db("SELECT * FROM ratings WHERE Rating_ID='#{key}';")
       @ratingshelp.each do |row|
         @helpfulnessandname[row["Rating_ID"]] = [row["Description"],row["Username"],row["Product_ID"],row["Score"],row["Date_Added"]] 
       end
     end
-
-    puts @helpfulnessandname
 
   end
 
