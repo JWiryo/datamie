@@ -15,6 +15,27 @@ class UsersController < ApplicationController
 												inner join products as B
 												on A.Product_ID = B.Product_ID
 												WHERE A.Username='#{$current_user}';")
+
+    @helpfulness = query_db("SELECT * FROM helpfulness WHERE Username='#{$current_user}';")
+
+    @helpfulnessandid = Hash.new
+    @helpfulnessandname = Hash.new
+
+    @helpfulness.each do |row|
+      @helpfulnessandid[row["Rating_ID"]] = row["Score"]
+    end
+
+    puts @helpfulnessandid
+
+    @helpfulnessandid.each do |key, value|
+      @ratingshelp = query_db("SELECT * FROM ratings WHERE Rating_ID='#{key}';")
+      @ratingshelp.each do |row|
+        @helpfulnessandname[row["Rating_ID"]] = [row["Description"],row["Username"],row["Product_ID"],row["Score"],row["Date_Added"]] 
+      end
+    end
+
+    puts @helpfulnessandname
+
   end
 
   def showorder
@@ -33,7 +54,6 @@ class UsersController < ApplicationController
       @productsandname[i] = id["Product_Name"]
       i = i + 1
     end
-
     # @orderitemsall.each do |row|
     #   if row[0] == @oid.to_i
     #     puts row[0]

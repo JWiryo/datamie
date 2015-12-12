@@ -72,10 +72,35 @@
     <% @ratings.each do |row| %>
     <tr>
       <td><%= row["Rating_ID"] %></td>
-      <td><%= row["Date"] %></td>
+      <td><%= row["Date_Added"] %></td>
       <td><%= link_to row["Product_Name"], url_for(:controller => 'products', :action => 'show', :id => row["Product_ID"])%></td>
       <td><%= row["Score"] %></td>
       <td><%= row["Description"] %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h1> Here are Ratings You Have Reviewed </h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Rating ID</th>
+      <th>Rated By</th>
+      <th>Rating Description</th>
+      <th>Rating Score</th>
+      <th>Helpfulness Score You Gave</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @helpfulness.each do |row| %>
+    <tr>
+      <td><%= link_to row["Rating_ID"], url_for(:controller => 'products', :action => 'show', :id => @helpfulnessandname[row["Rating_ID"]][2]) %></td>
+      <td><%= @helpfulnessandname[row["Rating_ID"]][1] %></td>
+      <td><%= @helpfulnessandname[row["Rating_ID"]][0] %></td>
+      <td><%= @helpfulnessandname[row["Rating_ID"]][3] %></td>
+      <td><%= row["Score"] %></td>
     </tr>
     <% end %>
   </tbody>
