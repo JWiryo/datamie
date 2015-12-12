@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   post 'signup' => 'users#create'
   get 'edit' => 'users#edit'
   post 'edit' => 'users#update'
-  get 'changepassword' => 'users#changepassword'
+  get 'changepassword' => 'users#changepasswordform'
+  post 'changepassword' => 'users#changepassword'
 
   get 'profile/:id' => 'users#showorder'
 

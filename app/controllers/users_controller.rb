@@ -50,29 +50,6 @@ class UsersController < ApplicationController
       @productsandname[i] = id["Product_Name"]
       i = i + 1
     end
-    # @orderitemsall.each do |row|
-    #   if row[0] == @oid.to_i
-    #     puts row[0]
-    #   end
-    # end
-
-    # puts @orderitemsall.to_s
-
-    # if @orderitemsall[0][0] == 1 then
-    #   puts 'TRUE'
-    # else
-    #   puts 'FALSE'
-    # end
-
-    #puts @productsandname
-    #puts "id = #{@id}" 
-
-    # puts @orderid.first["Order_ID"]
-    # @orderitemsall.each do |row|
-    #   if row[0] == @orderid.first["Order_ID"]
-    #     puts "yes"
-    #   end
-    # end
 
   end
 
@@ -109,9 +86,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def changepassword
-  end
-
   def new
   end
 
@@ -142,6 +116,33 @@ class UsersController < ApplicationController
       redirect_to :back
       flash[:danger] = e.message
     end
+  end
+
+  def changepasswordform
+  end
+
+  def changepassword
+    @profile_password = query_db("SELECT Password FROM users WHERE Username = '" + $current_user + "' ; " ).first["Password"]
+    @current_password = params[:users][:currentpassword]
+    @new_password = params[:users][:newpassword]
+    @repeatpassword = params[:users][:repeatpassword]
+
+    if @profile_password == @current_password
+      if @new_password == @repeatpassword
+        query_db("UPDATE users SET Password = '#{@new_password}' WHERE Username = '" + $current_user + "' ; " )
+        log_out
+        redirect_to root_url
+        flash[:success] = "Change Password Successful, Please Login With Your New Password"
+      else
+        redirect_to url_for(:controller => 'users', :action=>'changepasswordform')
+        flash[:danger] = "New Password Does Not Match With Repeated Password Input"
+      end
+    else
+      redirect_to url_for(:controller => 'users', :action=>'changepasswordform')
+      flash[:danger] = "Inserted Password Does Not Match With Your Password"
+    end
+      
+
   end
 
 end
