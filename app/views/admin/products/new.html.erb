@@ -1,1 +1,11 @@
+<h1>Add New Products</h1>
 
+<%= form_for :products, url: admin_products_path do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %><br/>
+  <%= f.label :qty, 'Quantity' %>
+  <%= f.number_field :qty, class: 'form-control' %><br/>
+  <%= f.label :price %>
+  <%= f.number_field :price, class: 'form-control' %><br/>
+  <%= f.submit :class=>" btn btn-success form-control" %>
+<% end %>

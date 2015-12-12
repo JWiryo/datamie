@@ -9,9 +9,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :dashboard, only: [:index]
     resources :users, only: [:index, :show]
-    resources :products, only: [:index, :new, :create]
+    resources :products
   end
-
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -34,7 +33,7 @@ Rails.application.routes.draw do
   get 'login' => 'session#new'
   post 'login' => 'session#create'
   delete 'logout'  => 'session#destroy'
-	
+
 	post 'ordersession/orders_add'  => 'ordersession#orders_add'
 	post 'ordersession/orders_update'  => 'ordersession#orders_update'
 	post 'ordersession/orders_remove'  => 'ordersession#orders_remove'

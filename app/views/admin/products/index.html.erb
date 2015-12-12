@@ -1,24 +1,32 @@
 <h1>All Products</h1>
 
+<div class="verticalspace">
+  <%= link_to "Add New Products", new_admin_product_path , class: "btn btn-primary" %>
+</div>
+
 <table class="table">
   <thead>
     <tr>
       <th>ID</th>
       <th>Name</th>
       <th>Stock</th>
+      <th>Price</th>
       <th>Date Added</th>
       <th>Last Updated</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @products.each do |p| %>
-    <tr>
-      <td><%=p["Product_ID"]%></td>
-      <td><%=p["Product_Name"]%></td>
-      <td><%=p["Stock_Qty"]%></td>
-      <td><%=p["Date_Added"]%></td>
-      <td><%=p["Last_Updated"]%></td>
-    </tr>
+      <tr>
+        <td><%=p["Product_ID"]%></td>
+        <td><%=p["Product_Name"]%></td>
+        <td><%=p["Stock_Qty"]%></td>
+        <td>SGD <%= sprintf('%.2f', p["Price"]) %>
+        <td><%=p["Date_Added"]%></td>
+        <td><%=p["Last_Updated"]%></td>
+        <td><%= link_to "Edit", {:controller => 'admin/products', :action => "edit", :id=>p["Product_ID"]} %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>

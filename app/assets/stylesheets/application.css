@@ -52,3 +52,7 @@ html, body {
 .table > tbody > tr > td {
   background-color: white;
 }
+
+.verticalspace {
+  margin: 20px 0;
+}
