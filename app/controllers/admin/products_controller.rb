@@ -42,7 +42,7 @@ class Admin::ProductsController < ApplicationController
         Price='#{@new_price}'
         WHERE Product_ID='#{params[:id]}';")
       redirect_to url_for(:controller => 'admin/products', :action=>'index')
-      flash[:success] = "New Product Successfully Added"
+      flash[:success] = "Product ID #{params[:id]} Successfully Edited"
     rescue Exception => e
       redirect_to :back
       flash[:danger] = e.message

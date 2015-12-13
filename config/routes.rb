@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resources :products
   end
 
+  get 'admin/products/:id/edit' => 'admin/products#edit'
+  post 'admin/products/:id' => 'admin/products#update'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   get 'products' => 'products#index'
