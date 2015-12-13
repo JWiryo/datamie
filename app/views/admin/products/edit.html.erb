@@ -1,5 +1,7 @@
 <h1>Edit Product Details</h1>
 
+<%= button_to "Back", :back, :method => "get", :class => "btn btn-primary" %>
+
 <%= form_for :products, url: admin_product_path do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control', :value=>@edit_name %><br/>
