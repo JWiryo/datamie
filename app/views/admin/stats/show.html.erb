@@ -1,9 +1,8 @@
-<h1>All Products</h1>
+<h1>Statistics</h1>
 
-<div class="verticalspace">
-  <%= link_to "Add New Products", new_admin_product_path , class: "btn btn-primary" %>
-  <%= button_to "Back", :back, :method => "get", :class => "btn btn-primary" %>
-</div>
+<%= button_to "Back", :back, :method => "get", :class => "btn btn-primary" %>
+
+<h3>Top 5 popular products in <%= [@month_name,@year].join(" ") %></h3>
 
 <table class="table">
   <thead>

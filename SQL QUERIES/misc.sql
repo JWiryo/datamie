@@ -9,12 +9,12 @@ SELECT * FROM Brand;
 -- Query for most popular products in terms of quantities sold in a particular month
 SELECT * FROM ( SELECT Product_ID, SUM(Quantity) AS amt_sold FROM Order_Items
 				WHERE Order_Id IN (SELECT Order_Id FROM Orders
-				WHERE Order_Date >= DATE_FORMAT(sysdate(), '%Y-%m-01'))
+				WHERE MONTH(Order_Date)=10 AND YEAR(Order_Date)=2015)
 				GROUP BY Product_ID) A
 inner join Products B
 on A.Product_ID = B.Product_ID
 Order By A.amt_sold DESC
-LIMIT 3;
+LIMIT 5;
 
 -- For a given product, a user could ask for the top 3  most useful feedback.
 -- Sorted based on average usefulness score

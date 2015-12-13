@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'admin/products/:id/edit' => 'admin/products#edit'
   post 'admin/products/:id' => 'admin/products#update'
 
+  get 'admin/stats/:month_year' => 'admin/stats#show'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   get 'products' => 'products#index'

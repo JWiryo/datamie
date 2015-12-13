@@ -2,5 +2,14 @@
 
 <div class="verticalspace">
   <%= link_to "Show User Accounts", admin_users_path , class: "btn btn-default btn-lg" %>
-  <%= link_to "Show All Products", admin_products_path , class: "btn btn-default btn-lg" %>
+  <%= link_to "Show All Products", admin_products_path , class: "btn btn-default btn-lg" %> </br>
+  <h3>Show statistics for month:</h3></br>
+
+  <% @list_of_years.each do |y| %>
+    <% @list_of_month_names.each do |m| %>
+      <%= link_to "#{m} #{y}", "/admin/stats/#{m}_#{y}", class: "btn btn-default btn-lg" %>
+    <% end %>
+  <% end %>
+
+
 </div
