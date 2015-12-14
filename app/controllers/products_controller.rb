@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
   before_action :prepare_sort, only: [:index]
+  before_action :prepare_sort_only, only: [:index]
 
   def index
     if params[:search_flavour].nil? && params[:search_qty].nil?
@@ -10,14 +11,14 @@ class ProductsController < ApplicationController
     else
       if params[:search_flavour].empty?
         @qty = params[:search_qty]
-        @products = query_db("SELECT * FROM products WHERE Stock_Qty > "+@qty.to_s+" "+@sort.to_s+";")
+        @products = query_db("SELECT * FROM products WHERE Stock_Qty > "+@qty.to_s+" "+@sort_only.to_s+";")
       elsif params[:search_qty].empty?
         @flavour = params[:search_flavour]
-        @products = query_db("SELECT * FROM products WHERE Product_Name LIKE '%"+@flavour.to_s+"%' AND Stock_Qty > 0 "+@sort.to_s+";")
+        @products = query_db("SELECT * FROM products WHERE Product_Name LIKE '%"+@flavour.to_s+"%' AND Stock_Qty > 0 "+@sort_only.to_s+";")
       else
         @flavour = params[:search_flavour]
         @qty = params[:search_qty]
-        @products = query_db("SELECT * FROM products WHERE Product_Name LIKE '%"+@flavour.to_s+"%' AND Stock_Qty > "+@qty.to_s+ " "+@sort.to_s+";")
+        @products = query_db("SELECT * FROM products WHERE Product_Name LIKE '%"+@flavour.to_s+"%' AND Stock_Qty > "+@qty.to_s+ " "+@sort_only.to_s+";")
       end
     end
   end
@@ -45,8 +46,13 @@ class ProductsController < ApplicationController
     @sort = "SELECT * FROM products;" if params[:sort].nil?
     @sort = "SELECT * FROM products ORDER BY Product_Name ASC;" if params[:sort]=="AtoZ"
     @sort = "SELECT * FROM products ORDER BY Stock_Qty DESC;" if params[:sort]=="stock"
-    @sort = "ORDER BY Price ASC" if params[:sort]=="priceASC"
-    @sort = "ORDER BY Price DESC" if params[:sort]=="priceDESC"
+    @sort = "SELECT * FROM products ORDER BY Price ASC;" if params[:sort]=="priceASC"
+    @sort = "SELECT * FROM products ORDER BY Price DESC;" if params[:sort]=="priceDESC"
+  end
+
+  def prepare_sort_only
+    @sort_only = "ORDER BY PRICE ASC" if params[:sort]=="priceASC"
+    @sort_only = "ORDER BY PRICE DESC" if params[:sort]=="priceDESC"
   end
 
 end

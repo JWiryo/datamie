@@ -196,8 +196,3 @@ BEFORE UPDATE ON Helpfulness FOR EACH ROW BEGIN
     END IF;
 END;//
 delimiter ;
-
-CREATE TABLE Brand(
-	Brand_Name VARCHAR(255),
-    Brand_Code VARCHAR(8)
-);
