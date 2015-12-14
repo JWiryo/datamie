@@ -48,7 +48,6 @@
 			<h2>Helpfulness Score</h2>
 		</div>
 		<div class="col-xs-3">
-
 		</div>
 	</div>
 
@@ -78,13 +77,18 @@
 				</div>
 
 				<div class="col-xs-3">
-					<%= form_for :helpfulness, url: url_for(:controller => "helpfulness", :action => "create") do |h| %>
-						<%= h.select :Score, ([['Very Useless', 0], ['Useless', 1], ['Average',2], ['Helpful', 3], ['Very Helpful', 4], ['Perfect', 5]]) %>
-						<%= h.submit :class=>"form-control btn btn-primary", :value=>"Submit" %>
-						<%= h.hidden_field :Rating_ID, :value => row["Rating_ID"] %>
-						<%= h.hidden_field :Username, :value => $current_user%>
+					<% if logged_in? %>
+						<%= form_for :helpfulness, url: url_for(:controller => "helpfulness", :action => "create") do |h| %>
+							<%= h.select :Score, ([['Very Useless', 0], ['Useless', 1], ['Average',2], ['Helpful', 3], ['Very Helpful', 4], ['Perfect', 5]]) %>
+							<%= h.submit :class=>"form-control btn btn-primary", :value=>"Submit" %>
+							<%= h.hidden_field :Rating_ID, :value => row["Rating_ID"] %>
+							<%= h.hidden_field :Username, :value => $current_user%>
+						<% end %>
+					<% else %>
+						<p> Please <%= link_to 'login', login_path %> first to be able to rate the product. Thank you.
 					<% end %>
 				</div>
+
 
 			</div>
 		</div>
@@ -94,22 +98,26 @@
 	<!-- new rating -->
 	<div class="row">
 		<div class="well">
-			<%= form_for :rating, url: url_for(:controller => "ratings", :action => "create") do |f| %>
-				<div class="row">
-					<div class="col-xs-4">
-						<p>Rating Description</p>
-						<%= f.text_area :Description, :placeholder=>"How's the indomie homie?", :class=>"form-control"%>
+			<% if logged_in? %>
+				<%= form_for :rating, url: url_for(:controller => "ratings", :action => "create") do |f| %>
+					<div class="row">
+						<div class="col-xs-4">
+							<p>Rating Description</p>
+							<%= f.text_area :Description, :placeholder=>"How's the indomie homie?", :class=>"form-control"%>
+						</div>
+						<div class="col-xs-4">
+							<p>Rating Score</p>
+							<%= f.number_field :Score, :class=>"form-control bfh-number", :min=>"0", :max=>"10", :placeholder=>"no decimals allowed" %>
+						</div>
+						<div class="col-xs-4">
+							<%= f.submit :class=>" btn btn-success form-control" %>
+						</div>
 					</div>
-					<div class="col-xs-4">
-						<p>Rating Score</p>
-						<%= f.number_field :Score, :class=>"form-control bfh-number", :min=>"0", :max=>"10", :placeholder=>"no decimals allowed" %>
-					</div>
-					<div class="col-xs-4">
-						<%= f.submit :class=>" btn btn-success form-control" %>
-					</div>
-				</div>
-				<%= f.hidden_field :Product_ID, :value => @product["Product_ID"] %>
-				<%= f.hidden_field :Username, :value => $current_user %>
+					<%= f.hidden_field :Product_ID, :value => @product["Product_ID"] %>
+					<%= f.hidden_field :Username, :value => $current_user %>
+				<% end %>
+			<% else %>
+				<p> Please <%= link_to 'login', login_path %> first to be able to rate the product. Thank you.
 			<% end %>
 		</div>
 	</div>
