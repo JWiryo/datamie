@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
       else
         @flavour = params[:search_flavour]
         @qty = params[:search_qty]
-        @products = query_db("SELECT * FROM products WHERE Product_Name LIKE '%"+@flavour.to_s+"%' AND Stock_Qty > "+@qty.to_s+ " "+@sort_only.to_s+";")
+        @products = query_db("SELECT * FROM products WHERE Product_Name LIKE '%"+@flavour.to_s+"%' AND Stock_Qty >= "+@qty.to_s+ " "+@sort_only.to_s+";")
       end
     end
   end
