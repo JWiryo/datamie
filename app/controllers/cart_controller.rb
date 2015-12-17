@@ -10,6 +10,25 @@ class CartController < ApplicationController
 					@products << row
 				end
 			end
+			
+			products_in_session = '-1' #does not return anything
+			if !session[:orders].nil?
+				if session[:orders].any?
+					_pis = []
+					session[:orders].each do |order|
+						_pis << order["table"]["product_id"]
+					end
+					products_in_session = _pis.join(',')
+				end
+			end
+			recommendation_querystr = 'SELECT P.*, sum(Quantity) as Sales_Count FROM Order_Items
+																	INNER JOIN Products P ON Order_Items.Product_ID = P.Product_ID
+																	WHERE Order_ID IN (SELECT DISTINCT Order_ID FROM Order_Items
+																						WHERE Product_ID IN ('+products_in_session+'))
+																	AND P.Product_ID NOT IN ('+products_in_session+')
+																	GROUP BY P.Product_ID
+																	ORDER BY sum(Quantity) DESC;'
+			@recommendation = query_db(recommendation_querystr)
 		else
 			#prevent user from accessing forbidden areas if not logged in
 			redirect_to url_for(:controller => 'products', :action => 'index')
