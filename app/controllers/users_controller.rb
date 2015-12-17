@@ -11,10 +11,14 @@ class UsersController < ApplicationController
 
     @orders = query_db("SELECT * FROM orders WHERE Username='#{$current_user}';")
 
-    @ratings = query_db("SELECT A.*, B.Product_Name FROM ratings as A
-												inner join products as B
-												on A.Product_ID = B.Product_ID
-												WHERE A.Username='#{$current_user}';")
+		@ratings = query_db("SELECT *, C.Product_Name FROM (SELECT Rating_ID, AVG(score) AS Helpfulness_Score FROM Helpfulness
+  										GROUP BY Rating_ID) A
+  							      right outer join Ratings B
+											on A.Rating_ID = B.Rating_ID
+											inner join products as C
+											on B.Product_ID = C.Product_ID
+  							      WHERE B.Username = '#{$current_user}'
+  							      Order By Helpfulness_Score DESC;")
 
     @helpfulness = query_db("SELECT * FROM helpfulness WHERE Username='#{$current_user}';")
 
