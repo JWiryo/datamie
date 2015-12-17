@@ -6,13 +6,13 @@
 		<div class="well">
 			<div class="row">
 				<div class="col-xs-6">
-					Date Added: <%= @product["Date_Added"] %>
+					<p style="margin: 7px"> Date Added: <%= @product["Date_Added"].strftime("%d-%m-%Y") %> </p>
 				</div>
 				<div class="col-xs-2">
-					SGD <%= sprintf('%.2f', @product["Price"]) %>
+					<p style="margin: 7px"> SGD <%= sprintf('%.2f', @product["Price"]) %> </p>
 				</div>
 				<div class="col-xs-1">
-					<%= @product["Stock_Qty"] %>
+					<p style="margin: 7px"> <%= @product["Stock_Qty"] %> </p>
 				</div>
 				<div class="col-xs-3">
 					<% if logged_in? %>
@@ -38,17 +38,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-xs-3">
 			<h2>Ratings</h2>
-		</div>
-		<div class="col-xs-3">
-			<h2>Rating Score</h2>
-		</div>
-		<div class="col-xs-3">
-			<h2>Helpfulness Score</h2>
-		</div>
-		<div class="col-xs-3">
-		</div>
 	</div>
 
 	<% @ratings.each do |row| %>
@@ -56,31 +46,46 @@
 		<div class="well">
 
 			<div class="row">
-				<div class="col-xs-3">
-					<%= row["Username"] %>
-					<%= row["Date"] %>
+				<div class="col-xs-4">
+					<a><%= row["Username"] %></a> on 
+					<%= row["Date_Added"].strftime("%d-%m-%Y") %>
+				</div>
+				<div class="col-xs-2">
+					<p style="margin: 0px 10px"> <span class="glyphicon glyphicon-star"></span> </p>
+				</div>
+				<div class="col-xs-2">
+					<p style="margin: 0px 10px"> <span class="glyphicon glyphicon-thumbs-up"></span> </p>
 				</div>
 			</div>
 
 			<div class="row">
 
-				<div class="col-xs-3">
-					<%= row["Description"] %>
+				<div class="col-xs-4">
+					<p style="margin: 7px"> <%= row["Description"] %> </p>
 				</div>
 
-				<div class="col-xs-3">
-					<%= row["Score"] %>/10
+				<div class="col-xs-2">
+					<p style="margin: 7px"> <%= row["Score"] %>/10 </p>
 				</div>
 
-				<div class="col-xs-3">
-					<%= row["Helpfulness_Score"] %>/5.0
+				<div class="col-xs-2">
+					<p style="margin: 7px"> <%= row["Helpfulness_Score"] %>/5.0 </p>
 				</div>
 
-				<div class="col-xs-3">
+				<div class="col-xs-4">
 					<% if logged_in? %>
 						<%= form_for :helpfulness, url: url_for(:controller => "helpfulness", :action => "create") do |h| %>
-							<%= h.select :Score, ([['Very Useless', 0], ['Useless', 1], ['Average',2], ['Helpful', 3], ['Very Helpful', 4], ['Perfect', 5]]) %>
-							<%= h.submit :class=>"form-control btn btn-primary", :value=>"Submit" %>
+							<div class="row">
+								<div class="col-xs-6">
+									<%= h.select :Score, [['Very Useless', 0], ['Useless', 1], ['Average',2], ['Helpful', 3], ['Very Helpful', 4], ['Perfect', 5]], {selected: "2"}, { :class => 'form-control' } %>
+								</div>
+								<div class="col-xs-6">
+									<!--%= h.submit :class=>"form-control btn btn-primary", :value=>"Submit" %-->
+									<%= button_tag(type: 'submit', class: "btn btn-primary form-control") do %>
+										Submit <span class="glyphicon glyphicon-thumbs-up"></span>
+									<% end %>
+								</div>
+							</div>
 							<%= h.hidden_field :Rating_ID, :value => row["Rating_ID"] %>
 							<%= h.hidden_field :Username, :value => $current_user%>
 						<% end %>
@@ -105,11 +110,11 @@
 							<p>Rating Description</p>
 							<%= f.text_area :Description, :placeholder=>"How's the indomie homie?", :class=>"form-control"%>
 						</div>
-						<div class="col-xs-4">
+						<div class="col-xs-3">
 							<p>Rating Score</p>
 							<%= f.number_field :Score, :class=>"form-control bfh-number", :min=>"0", :max=>"10", :placeholder=>"no decimals allowed" %>
 						</div>
-						<div class="col-xs-4">
+						<div class="col-xs-2 col-xs-offset-3" style="padding-top: 50px;">
 							<%= f.submit :class=>" btn btn-success form-control" %>
 						</div>
 					</div>

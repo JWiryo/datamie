@@ -4,7 +4,7 @@ DROP TABLE Order_Items;
 DROP TABLE Orders;
 DROP TABLE Products;
 DROP TABLE Users;
-DROP TABLE Brand;
+#DROP TABLE Brand;
 
 CREATE TABLE Users(
 	Username VARCHAR(255) NOT NULL,

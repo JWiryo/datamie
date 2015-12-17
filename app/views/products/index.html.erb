@@ -1,23 +1,38 @@
 <div>
 	<%= form_tag products_path, :method => 'get' do %>
 	  <div class="navbar-form">
-			<div class="input-group">
-				<%= text_field_tag :search_flavour, params[:search], :class=>"form-control", :placeholder=>"enter flavour here" %>
-				<%= text_field_tag :search_qty, params[:search], :class=>"form-control", :placeholder=>"enter quantity here" %>
-				<strong>Sort= </strong>
-				<%= radio_button_tag(:sort, "AtoZ") %>
-				<%= label_tag(:sort_AtoZ, "From A to Z") %>
-				<%= radio_button_tag(:sort, "stock") %>
-				<%= label_tag(:sort_stock, "Decreasing Stock") %>
-				<%= radio_button_tag(:sort, "priceASC") %>
-				<%= label_tag(:sort_priceASC, "Increasing Price") %>
-				<%= radio_button_tag(:sort, "priceDESC") %>
-				<%= label_tag(:sort_priceDESC, "Decreasing Price") %>
-			<div class="input-group-btn">
-			  <%= submit_tag "Search", :name => nil, :class=>"form-control" %>
+			<div class="row">
+				<div class="col-xs-2"><h4><b>Search Flavor: </b></h4></div>
+				<div class="col-xs-8">
+					<%= text_field_tag :search_flavour, params[:search], :class=>"form-control control-full-width", :placeholder=>"enter flavour here" %>
+				</div>
 			</div>
+			<div class="row">
+				<div class="col-xs-2"><h4><b>Minimum Stock: </b></h4></div>
+				<div class="col-xs-8">
+					<%= text_field_tag :search_qty, params[:search], :class=>"form-control control-full-width", :placeholder=>"enter minimum quantity here" %>
+				</div>
+				<div class="col-xs-2">
+					<%= submit_tag "Search", :name => nil, :class=>"btn form-control control-full-width" %>
+				</div>
 			</div>
-	  </div>
+			<div class="row">
+				<div class="col-xs-10">
+					<strong>Sort by:  </strong>
+					<%= radio_button_tag(:sort, "AtoZ") %>
+					<%= label_tag(:sort_AtoZ, "From A to Z") %>
+					&nbsp;&nbsp;
+					<%= radio_button_tag(:sort, "stock") %>
+					<%= label_tag(:sort_stock, "Decreasing Stock") %>
+					&nbsp;&nbsp;
+					<%= radio_button_tag(:sort, "priceASC") %>
+					<%= label_tag(:sort_priceASC, "Increasing Price") %>
+					&nbsp;&nbsp;
+					<%= radio_button_tag(:sort, "priceDESC") %>  
+					<%= label_tag(:sort_priceDESC, "Decreasing Price") %>
+				</div>
+			</div>
+		</div>
 	<% end %>
 </div>
 
@@ -30,15 +45,17 @@
 			    <h4 class="card-title">
 			    	<%= link_to row["Product_Name"], url_for(:controller => 'products', :action => 'show', :id => row["Product_ID"]) %></h4>
 			    <div class="card-text">
+						<p>
 						SGD <%= sprintf('%.2f', row["Price"]) %><br/>
-			    	Stock Left= <%= row["Stock_Qty"] %>
+			    	Stock Left: <%= row["Stock_Qty"] %>
+						</p>
 			    </div>
 					<% if logged_in? %>
 						<% if orders_get_quantity(row["Product_ID"]).to_i==0 %>
 							<!--input class="form-control bfh-number" type="number" value="<%= orders_get_quantity(row["Product_ID"]).to_i %>" min="0" name="orderqty_<%= row["Product_ID"] %>" id="orderqty_<%= row["Product_ID"] %>"-->
-							<button class="btn btn-primary btn-add-to-cart" id="<%= row["Product_ID"] %>">BUY</button>
+							<button class="btn btn-primary btn-add-to-cart control-full-width" id="<%= row["Product_ID"] %>">BUY</button>
 						<% else %>
-							<button class="btn btn-primary btn-remove-from-cart" id="<%= row["Product_ID"] %>">CANCEL</button>
+							<button class="btn btn-primary btn-remove-from-cart control-full-width" id="<%= row["Product_ID"] %>">CANCEL</button>
 						<% end %>
 					<% end %>
 			  </div>

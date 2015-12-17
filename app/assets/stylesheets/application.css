@@ -56,3 +56,18 @@ html, body {
 .verticalspace {
   margin: 20px 0;
 }
+
+.well {
+	padding: 9px 19px;
+	margin-bottom: 10px;
+}
+
+.control-full-width {
+	width: 100% !important;
+}
+
+.alert {
+	position: fixed;
+	width: 100%;
+	z-index: 10000;
+}

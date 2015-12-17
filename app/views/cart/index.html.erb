@@ -5,13 +5,15 @@
 		<div class="well">
 			<div class="row">
 				<div class="col-xs-3">
+					<p style="margin: 7px">
 					<%= link_to row["Product_Name"], url_for(:controller => 'products', :action => 'show', :id => row["Product_ID"]) %>
+					</p>
 				</div>
 				<div class="col-xs-2">
-					SGD <%= sprintf('%.2f', row["Price"]) %>
+					<p style="margin: 7px"> SGD <%= sprintf('%.2f', row["Price"]) %> </p>
 				</div>
 				<div class="col-xs-1">
-					<%= row["Stock_Qty"] %>
+					<p style="margin: 7px"> <%= row["Stock_Qty"] %> </p>
 				</div>
 				<div class="col-xs-6">
 					<div class="col-xs-4">
@@ -52,13 +54,15 @@
 		<div class="well">
 			<div class="row">
 				<div class="col-xs-6">
+					<p style="margin: 7px">
 					<%= link_to row["Product_Name"], url_for(:controller => 'products', :action => 'show', :id => row["Product_ID"]) %>
+					</p>
 				</div>
 				<div class="col-xs-2">
-					SGD <%= sprintf('%.2f', row["Price"]) %>
+					<p style="margin: 7px"> SGD <%= sprintf('%.2f', row["Price"]) %> </p>
 				</div>
 				<div class="col-xs-1">
-					<%= row["Stock_Qty"] %>
+					<p style="margin: 7px"> <%= row["Stock_Qty"] %> </p>
 				</div>
 				<div class="col-xs-3">
 					<% if orders_get_quantity(row["Product_ID"]).to_i==0 %>
